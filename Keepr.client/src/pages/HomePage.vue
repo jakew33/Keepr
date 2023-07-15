@@ -1,19 +1,50 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
-        class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+  <div class="Home-Page">
+
+    <div class="container">
+      <div class="row my-3">
+        <div class="col-md-4" v-for="k in keeps" :key="k.id">
+          <KeepCard :keep="k" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { logger } from "../utils/Logger.js"
+import { keepsService } from "../services/KeepsService.js"
+import Pop from "../utils/Pop.js"
+import { computed, onMounted, ref } from "vue"
+import { AppState } from "../AppState.js"
 export default {
   setup() {
-    return {}
+    const filterBy = ref('')
+
+    async function getAllKeeps() {
+      try {
+        logger.log('getting keeps')
+        await keepsService.getAllKeeps()
+      } catch (error) {
+        Pop.error(error.message)
+        logger.log(error)
+      }
+    }
+
+    onMounted(() => {
+      getAllKeeps()
+    })
+    return {
+      filterBy,
+      appState: computed(() => AppState),
+      keeps: computed(() => {
+        if (filterBy.value == "") {
+          return AppState.keeps
+        } else {
+          return AppState.keeps.filter(k => k.name == filterBy.value)
+        }
+      })
+    }
   }
 }
 </script>
