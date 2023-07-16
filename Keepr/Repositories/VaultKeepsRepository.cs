@@ -8,16 +8,23 @@ public class VaultKeepsRepository
     _db = db;
   }
 
-  internal VaultKeep CreateVaultKeep(VaultKeep vaultKeepData)
+  internal VaultKeep CreateVaultKeep(VaultKeep vkData)
   {
     string sql = @"
-    INSERT INTO vaultKeeps(vaultId, keepId, creatorId)
-    VALUES(@VaultId, @KeepId, @CreatorId);
-    SELECT LAST_INSERT_ID()
+    INSERT INTO vaultKeeps
+    (vaultId, keepId, creatorId)
+    VALUES
+    (@VaultId, @KeepId, @CreatorId);
+    SELECT 
+    LAST_INSERT_ID()
     ;";
 
-    int id = _db.ExecuteScalar<int>(sql, vaultKeepData);
-    vaultKeepData.Id = id;
-    return vaultKeepData;
+    int id = _db.ExecuteScalar<int>(sql, vkData);
+    vkData.Id = id;
+    return vkData;
+
+    // VaultKeep vk = _db.Query<VaultKeep>(sql, vkData).FirstOrDefault();
+    // return vkData;
   }
+
 }

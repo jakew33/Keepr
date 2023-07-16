@@ -37,7 +37,7 @@ CREATE TABLE
     ) default charset utf8 COMMENT '';
 
 CREATE TABLE
-    IF NOT EXISTS vaultKeep(
+    IF NOT EXISTS vaultKeeps(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Time Created',
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Last Update',
@@ -46,4 +46,4 @@ CREATE TABLE
         keepId INT NOT NULL
     ) default charset utf8 COMMENT '';
 
-DROP TABLE keeps;
+DROP TABLE `vaultKeep`;

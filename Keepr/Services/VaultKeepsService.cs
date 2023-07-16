@@ -12,9 +12,9 @@ public class VaultKeepsService
     _keepsService = keepsService;
   }
 
-  // internal VaultKeep CreateVaultKeep(VaultKeep vaultKeepData)
-  // {
-  //   VaultKeep vaultKeep = _repo.CreateVaultKeep(vaultKeepData);
-  //   vaultKeep.CreatedAt = DataSetDateTime.Now;
-  // }
+  internal VaultKeep CreateVaultKeep(VaultKeep vkData)
+  {
+    VaultKeep newVk = _repo.CreateVaultKeep(vkData);
+    return newVk;
+  }
 }
