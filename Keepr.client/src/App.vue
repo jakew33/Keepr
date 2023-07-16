@@ -5,6 +5,14 @@
   <main>
     <router-view />
   </main>
+
+  <Modal id="modal">
+    <CreateKeepForm />
+  </Modal>
+
+  <Modal id="activeKeep">
+    <ActiveKeepCard />
+  </Modal>
 </template>
 
 <script>

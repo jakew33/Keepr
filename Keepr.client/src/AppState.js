@@ -8,4 +8,8 @@ export const AppState = reactive({
 
   /** @type {import('./models/Keep.js').Keep} */
   keeps: [],
+  myKeeps: [],
+
+  /** @type {import('./models/Keep.js').Keep} */
+  activeKeep: null,
 })

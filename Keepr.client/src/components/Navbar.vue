@@ -12,6 +12,7 @@
           <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
             About
           </router-link>
+          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">Create A Keep</button>
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
