@@ -29,7 +29,6 @@ public class VaultsRepository
     {
       vault.Creator = creator;
       return vault;
-
     }, vaultData).FirstOrDefault();
     return vault;
   }
@@ -51,5 +50,31 @@ public class VaultsRepository
       return vault;
     }, new { vaultId }).FirstOrDefault();
     return vault;
+  }
+
+  internal void EditVault(Vault vault)
+  {
+    string sql = @"
+    UPDATE vaults 
+    SET
+    creatorId = @creatorId,
+    name = @name,
+    description = @description,
+    img = @img,
+    isPrivate = @isPrivate
+    WHERE id = @id;
+    ;";
+    _db.Execute(sql, vault);
+  }
+
+  internal int DeleteVault(int vaultId)
+  {
+    string sql = @"
+    DELETE FROM vaults
+    WHERE id = @vaultId LIMIT 1
+    ;";
+
+    int rows = _db.Execute(sql, new { vaultId });
+    return rows;
   }
 }
