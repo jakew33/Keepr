@@ -1,15 +1,15 @@
 <template>
-  <div class="card text-white keep-card my3 bg rounded">
+  <div class="card text-white keep-card my3 bg rounded" @click="setActiveKeep(keep.id)">
     <img class="rounded elevation-5" :src="keep.img" :alt="keep.name">
     <div class="card-img-overlay">
       <div class="d-flex justify-content-around p-1">
       </div>
-      <p @click="setActiveKeep(keep.id)" class="text-center p-2 label label-default favorite elevation-5 rounded">
+      <p class="text-center p-2 label label-default favorite elevation-5 rounded">
         {{ keep.name }}</p>
     </div>
-    <div v-if="keep.creatorId == account.id" class="d-flex justify-content-around">
-      <button class="btn btn-dark elevation-5 text-white" @click="deleteKeep()">Delete Keep</button>
-    </div>
+  </div>
+  <div v-if="keep.creatorId == account.id" class="d-flex justify-content-around">
+    <button class="btn btn-dark elevation-5 text-white" @click="deleteKeep()">Delete Keep</button>
   </div>
 </template>
 
@@ -33,11 +33,12 @@ export default {
 
     return {
       account: computed(() => AppState.account),
+      keeps: computed(() => AppState.activeKeep),
 
       async setActiveKeep(keepId) {
         try {
           await keepsService.setActiveKeep(keepId)
-          Modal.getOrCreateInstance('#activeKeep').show()
+          Modal.getOrCreateInstance('#activeKeepCard').show()
         } catch (error) {
           logger.log(error)
           Pop.error(error)
@@ -47,12 +48,14 @@ export default {
       async deleteKeep() {
         try {
           if (await Pop.confirm())
-            await keepsService.deleteKeep(props.recipe.id)
+            await keepsService.deleteKeep(props.keep.id)
         } catch (error) {
           logger.error(error)
           Pop.error(error.message);
         }
-      }
+      },
+
+
 
     }
   }

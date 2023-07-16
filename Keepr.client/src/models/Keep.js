@@ -1,6 +1,6 @@
 export class Keep {
   constructor(data) {
-    this.is = data.id;
+    this.id = data.id;
     this.creatorId = data.creatorId;
     this.name = data.name;
     this.description = data.description;

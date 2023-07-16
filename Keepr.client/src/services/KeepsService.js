@@ -18,8 +18,9 @@ class KeepsService {
   }
 
   async setActiveKeep(keepId) {
-    AppState.activeKeep = AppState.keeps.find(k => k.id == keepId)
-    logger.log('Getting Active Keep', AppState.activeKeep)
+    const keep = AppState.keeps.find(k => k.id == keepId)
+    logger.log('Getting Active Keep', keep)
+    AppState.activeKeep = keep
   }
 
   async createKeep(keepData) {

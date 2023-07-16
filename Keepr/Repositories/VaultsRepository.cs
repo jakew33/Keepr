@@ -15,7 +15,7 @@ public class VaultsRepository
     INSERT INTO vaults
     (creatorId, name, description, img, isPrivate)
     VALUES
-    (@creatorId, @name, @description, @img, @isPrivate);
+    (@CreatorId, @Name, @Description, @Img, @IsPrivate);
 
     SELECT
     v.*,
@@ -31,6 +31,25 @@ public class VaultsRepository
       return vault;
 
     }, vaultData).FirstOrDefault();
+    return vault;
+  }
+
+  internal Vault getById(int vaultId)
+  {
+    string sql = @"
+    SELECT
+    v.*,
+    creator.*
+    FROM vaults v
+    JOIN accounts creator ON v.creatorID = creator.id
+    WHERE v.id = @vaultId;
+    ;";
+
+    Vault vault = _db.Query<Vault, Account, Vault>(sql, (vault, creator) =>
+    {
+      vault.Creator = creator;
+      return vault;
+    }, new { vaultId }).FirstOrDefault();
     return vault;
   }
 }

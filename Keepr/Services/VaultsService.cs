@@ -15,4 +15,11 @@ public class VaultsService
     return vault;
   }
 
+  internal Vault GetById(int vaultId)
+  {
+    Vault vault = _repo.getById(vaultId);
+    if (vault == null) throw new Exception($"{vaultId}: Whoops");
+    return vault;
+  }
+
 }

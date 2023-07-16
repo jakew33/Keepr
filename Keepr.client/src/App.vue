@@ -10,7 +10,7 @@
     <CreateKeepForm />
   </Modal>
 
-  <Modal id="activeKeep">
+  <Modal id="activeKeepCard">
     <ActiveKeepCard />
   </Modal>
 </template>

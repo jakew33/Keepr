@@ -31,4 +31,18 @@ public class VaultsController : ControllerBase
       return new ActionResult<Vault>(BadRequest(e.Message));
     }
   }
+
+  [HttpGet("{vaultId}")]
+  public ActionResult<Vault> GetById(int vaultId)
+  {
+    try
+    {
+      Vault vault = _vaultsService.GetById(vaultId);
+      return Ok(vault);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
 }
