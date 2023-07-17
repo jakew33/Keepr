@@ -24,22 +24,24 @@ public class VaultKeepsRepository
     return vkData;
   }
 
-  // internal List<VaultKeep> GetKeepsInVault(int vaultKeepData)
+  // internal List<VaultKeep> GetKeepsInVault(int vaultId)
   // {
-  //   string sql =@"
+  //   string sql = @"
   //   SELECT
   //   k.*,
-  //   act.*
-  //   FROM vaults v
-  //   JOIN accounts act ON act.id = v.creatorId
-  //   WHERE v.vaultId = @vaultKeepId
+  //   acct.*
+  //   FROM keeps k
+  //   JOIN accounts acct ON acct.id = k.creatorId
+  //   WHERE k.vaultId = @vaultId
   //   ;";
-  //   List<Keep> vaultKeeps = _db.Query<Keep, Account, Keep>(sql,(keep, account) =>
+
+  //   List<Keep> keeps = _db.Query<Keep, Vault, Keep>(sql, (k, acct) =>
   //   {
-  //     keep.Creator = account;
-  //     return keep;
-  //   }, new {vaultKeepData}).ToList();
-  //   return vault;
+  //     k.Creator = vault;
+  //     return k;
+  //   }, new { vaultId }).ToList();
+
+  //   return keeps;
   // }
 
   //TODO FIX WHATEVER'S WRONG WITH THIS

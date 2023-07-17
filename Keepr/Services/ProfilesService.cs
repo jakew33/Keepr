@@ -9,7 +9,7 @@ public class ProfilesService
     _repo = repo;
   }
 
-  internal Profile GetById(Profile userInfo)
+  internal Profile GetById(Account userInfo)
   {
     Profile profile = _repo.GetById(userInfo.Id);
     return profile;

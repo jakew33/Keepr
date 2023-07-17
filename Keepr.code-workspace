@@ -1,4 +1,3 @@
-
 {
   "folders": [
     {
@@ -8,7 +7,11 @@
     {
       "path": "Keepr",
       "name": "server"
-    },{"path":".github/workflows", "name":"workflows"}
+    },
+    {
+      "path": ".github/workflows",
+      "name": "workflows"
+    }
   ],
   "settings": {
     "editor.suggestSelection": "first",
@@ -36,29 +39,29 @@
       "source.fixAll": true
     },
     "workbench.colorCustomizations": {
-      "activityBar.activeBackground": "#028600",
-      "activityBar.background": "#028600",
-      "activityBar.foreground": "#e7e7e7",
-      "activityBar.inactiveForeground": "#e7e7e799",
-      "activityBarBadge.background": "#9fa1ff",
+      "activityBar.activeBackground": "#68a7eb",
+      "activityBar.background": "#68a7eb",
+      "activityBar.foreground": "#15202b",
+      "activityBar.inactiveForeground": "#15202b99",
+      "activityBarBadge.background": "#fbe3ef",
       "activityBarBadge.foreground": "#15202b",
       "commandCenter.border": "#e7e7e799",
-      "panel.border": "#028600",
-      "sash.hoverBorder": "#028600",
-      "sideBar.border": "#028600",
-      "statusBar.background": "#015300",
-      "statusBar.border": "#015300",
+      "panel.border": "#68a7eb",
+      "sash.hoverBorder": "#68a7eb",
+      "sideBar.border": "#68a7eb",
+      "statusBar.background": "#3b8de5",
+      "statusBar.border": "#3b8de5",
       "statusBar.foreground": "#e7e7e7",
-      "statusBarItem.hoverBackground": "#028600",
-      "statusBarItem.remoteBackground": "#015300",
+      "statusBarItem.hoverBackground": "#68a7eb",
+      "statusBarItem.remoteBackground": "#3b8de5",
       "statusBarItem.remoteForeground": "#e7e7e7",
-      "tab.activeBorder": "#028600",
-      "titleBar.activeBackground": "#015300",
+      "tab.activeBorder": "#68a7eb",
+      "titleBar.activeBackground": "#3b8de5",
       "titleBar.activeForeground": "#e7e7e7",
-      "titleBar.border": "#015300",
-      "titleBar.inactiveBackground": "#01530099",
+      "titleBar.border": "#3b8de5",
+      "titleBar.inactiveBackground": "#3b8de599",
       "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.color": "#015300"
+    "peacock.color": "#3b8de5"
   }
 }

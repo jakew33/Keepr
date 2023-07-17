@@ -4,12 +4,14 @@ public class VaultKeepsService
 {
   private readonly VaultKeepsRepository _repo;
   private readonly KeepsService _keepsService;
+  private readonly VaultsService _vaultsService;
 
-  public VaultKeepsService(VaultKeepsRepository repo, KeepsService keepsService)
+  public VaultKeepsService(VaultKeepsRepository repo, KeepsService keepsService, VaultsService vaultsService)
   {
 
     _repo = repo;
     _keepsService = keepsService;
+    _vaultsService = vaultsService;
   }
 
   internal VaultKeep CreateVaultKeep(VaultKeep vkData)
@@ -18,10 +20,11 @@ public class VaultKeepsService
     return newVk;
   }
 
-  // internal List<VaultKeep> GetKeepsInVault(int vkId)
+  // internal List<Keep> GetKeepsInVault(int vId, string userId)
   // {
-  //   List<VaultKeep> vks = _repo.GetKeepsInVault(vkId);
-  //   return vks;
+  //   _vaultsService.GetById(vaultId, userId);
+  //   List<Keep> keeps = _repo.GetKeepsInVault(vaultId);
+  //   return keeps;
   // }
 
   internal VaultKeep GetById(int vkId)
