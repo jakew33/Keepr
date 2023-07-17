@@ -70,7 +70,7 @@ public class KeepsRepository
     return keep;
   }
 
-  internal void EditKeep(Keep keep)
+  internal void EditKeep(Keep original)
   {
     string sql = @"
     UPDATE keeps 
@@ -82,7 +82,7 @@ public class KeepsRepository
     WHERE id = @id
     ;";
 
-    _db.Execute(sql, keep);
+    _db.Execute(sql, original);
   }
 
   internal int DeleteKeep(int keepId)

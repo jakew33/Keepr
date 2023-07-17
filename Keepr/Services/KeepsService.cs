@@ -21,28 +21,42 @@ public class KeepsService
     return keeps;
   }
 
-  internal Keep GetById(int keepId)
+  internal Keep GetById(int keepId, string userId)
   {
     Keep keep = _repo.GetById(keepId);
-    if (keep == null) throw new Exception("No Keep here fam");
+    if (keep == null)
+    {
+      throw new Exception("No Keep here, fam");
+    }
+
+    if (userId != keep.CreatorId)
+    {
+      throw new Exception("whoops");
+    }
     return keep;
   }
 
-  internal Keep EditKeep(Keep updateData)
+  internal Keep EditKeep(Keep keepData)
   {
-    Keep original = GetById(updateData.Id);
+    Keep original = GetById(keepData.Id, keepData.CreatorId);
 
-    original.CreatorId = updateData.CreatorId != null ? updateData.CreatorId : original.CreatorId;
-    original.Name = updateData.Name != null ? updateData.Name : original.Name;
-    original.Description = updateData.Description != null ? updateData.Description : original.Description;
-    original.Img = updateData.Img != null ? updateData.Img : original.Img;
+    if (original.CreatorId != keepData.CreatorId)
+    {
+      throw new Exception("You shall not pass");
+    }
+
+    original.CreatorId = keepData.CreatorId != null ? keepData.CreatorId : original.CreatorId;
+    original.Name = keepData.Name != null ? keepData.Name : original.Name;
+    original.Description = keepData.Description != null ? keepData.Description : original.Description;
+    original.Img = keepData.Img != null ? keepData.Img : original.Img;
 
     _repo.EditKeep(original);
     return original;
   }
+
   internal void DeleteKeep(int keepId, string userId)
   {
-    Keep keep = GetById(keepId);
+    Keep keep = GetById(keepId, userId);
     if (keep.CreatorId != userId) throw new Exception("Get outta here, nerd!");
     int rows = _repo.DeleteKeep(keepId);
     if (rows > 1) new Exception("I dunno");

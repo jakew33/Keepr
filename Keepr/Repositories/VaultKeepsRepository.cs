@@ -22,9 +22,22 @@ public class VaultKeepsRepository
     int id = _db.ExecuteScalar<int>(sql, vkData);
     vkData.Id = id;
     return vkData;
-
-    // VaultKeep vk = _db.Query<VaultKeep>(sql, vkData).FirstOrDefault();
-    // return vkData;
   }
 
+  // internal List<VaultKeep> GetKeepsInVault(int vkId)
+  // {
+  //   string sql = @"
+  //   SELECT
+  //   vk.*,
+  //   acct.* 
+  //   FROM vaultKeeps vk
+  //   JOIN accounts acct On acct.id = vk.creatorId
+  //   WHERE vk.vaultId = @vaultId
+  //   ;";
+
+  //   List<VaultKeep> vks = _db.Query<VaultKeep, CacheProfile, VaultKeep>(sql, (vks, acct) =>
+  //   {
+  //     vks.CreatorId = acct;
+  //   })
+  // }
 }
