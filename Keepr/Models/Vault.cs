@@ -10,3 +10,8 @@ public class Vault
   public bool IsPrivate { get; set; }
   public Account Creator { get; set; }
 }
+
+public class KeepsInVault : Vault
+{
+  public int VaultKeepId { get; set; }
+}

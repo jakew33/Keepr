@@ -47,3 +47,7 @@ CREATE TABLE
     ) default charset utf8 COMMENT '';
 
 DROP TABLE `keeps`;
+
+ALTER TABLE accounts
+ADD
+    COLUMN coverImg varchar(255) COMMENT 'Cover Image';

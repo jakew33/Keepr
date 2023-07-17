@@ -1,11 +1,11 @@
 <template>
-  <div class="card text-white keep-card my3 bg rounded" @click="setActiveKeep(keep.id)">
+  <div class="card text-white keep-card my-3 bg rounded " @click="setActiveKeep(keep.id)">
     <img class="rounded elevation-5" :src="keep.img" :alt="keep.name">
     <div class="card-img-overlay">
       <div class="d-flex justify-content-around p-1">
       </div>
-      <p class="text-center p-2 label label-default favorite elevation-5 rounded">
-        {{ keep.name }}</p>
+      <h3 class="align-text-bottom p-2 rounded">
+        {{ keep.name }}</h3>
     </div>
   </div>
   <div v-if="keep.creatorId == account.id" class="d-flex justify-content-around">

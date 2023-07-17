@@ -5,11 +5,13 @@ namespace Keepr.Controllers;
 public class KeepsController : ControllerBase
 {
   private readonly KeepsService _keepsService;
+  private readonly VaultKeepsService _vaultKeepsService;
   private readonly Auth0Provider _auth;
 
-  public KeepsController(KeepsService keepsService, Auth0Provider auth)
+  public KeepsController(KeepsService keepsService, VaultKeepsService vaultKeepsService, Auth0Provider auth)
   {
     _keepsService = keepsService;
+    _vaultKeepsService = vaultKeepsService;
     _auth = auth;
   }
 
@@ -95,4 +97,18 @@ public class KeepsController : ControllerBase
       return BadRequest(e.Message);
     }
   }
+
+  // [HttpGet("{keepId}/vaultKeeps")]
+  // public ActionResult<List<VaultKeep>> GetVaultKeeps(int keepId)
+  // {
+  //   try
+  //   {
+  //     List<VaultKeep> vks = _vaultKeepsService.GetVaultKeeps(keepId);
+  //     return Ok(vks);
+  //   }
+  //   catch (Exception e)
+  //   {
+  //     return BadRequest(e.Message);
+  //   }
+  // }
 }
