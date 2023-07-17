@@ -1,18 +1,28 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-    </router-link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+  <nav class="navbar navbar-expand-lg navbar-color border-1 px-3">
+    <!-- <router-link class="btn navbar-brand d-flex" :to="{ name: 'Home' }">
+    </router-link> -->
+    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button> -->
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
+          <router-link :to="{ name: 'Home' }" class="btn text-black">
+            Home
           </router-link>
-          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">Create A Keep</button>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle text-black" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Create
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item text-black" data-bs-toggle="modal" data-bs-target="#modal">Create Keep</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#vaultForm">Create Vault</a></li>
+            </ul>
+          </div>
+          <!-- <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">Create A Keep</button> -->
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
@@ -49,6 +59,11 @@ a:hover {
 @media screen and (min-width: 768px) {
   nav {
     height: 64px;
+  }
+
+  .btn-light {
+    box-shadow: 0px 0px 9px 0px #00000040;
+
   }
 }
 </style>

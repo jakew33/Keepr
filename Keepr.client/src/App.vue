@@ -2,7 +2,7 @@
   <header>
     <Navbar />
   </header>
-  <main>
+  <main class="bg-color">
     <router-view />
   </main>
 
@@ -12,6 +12,10 @@
 
   <Modal id="activeKeepCard">
     <ActiveKeepCard />
+  </Modal>
+
+  <Modal id="vaultForm">
+    <CreateVaultForm />
   </Modal>
 </template>
 
@@ -41,5 +45,9 @@ footer {
   display: grid;
   place-content: center;
   height: 32px;
+}
+
+.bg-color {
+  background-color: #fef0f0;
 }
 </style>

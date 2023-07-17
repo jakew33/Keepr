@@ -18,7 +18,7 @@ CREATE TABLE
         name VARCHAR(255) NOT NULL,
         description VARCHAR(500) NOT NULL,
         img VARCHAR(255) NOT NULL,
-        views INT NOT NULL,
+        views INT NOT NULL DEFAULT 0,
         kept INT NOT NULL DEFAULT 0,
         FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
     ) default charset utf8 COMMENT '';
@@ -46,4 +46,4 @@ CREATE TABLE
         keepId INT NOT NULL
     ) default charset utf8 COMMENT '';
 
-DROP TABLE `vaultKeep`;
+DROP TABLE `keeps`;

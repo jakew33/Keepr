@@ -1,10 +1,10 @@
 <template>
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title">Create Keep</h5>
+      <h5 class="modal-title">Create Vault</h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
-    <form @submit.prevent="createKeep()">
+    <form @submit.prevent="createVault()">
       <div class="modal-body">
         <div class="mb-3">
           <label for="name" class="form-label">Name</label>
@@ -19,7 +19,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success">Create Keep</button>
+        <button type="submit" class="btn btn-success">Create Vault</button>
       </div>
     </form>
   </div>
@@ -28,7 +28,7 @@
 
 <script>
 import { ref } from "vue";
-import { keepsService } from "../services/KeepsService.js";
+import { vaultsService } from "../services/VaultsService.js";
 import { Modal } from "bootstrap";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
@@ -38,12 +38,12 @@ export default {
     return {
       editable,
 
-      async createKeep() {
+      async createVault() {
         try {
-          const keepData = editable.value
-          await keepsService.createKeep(keepData)
+          const vaultData = editable.value
+          await vaultsService.createVault(vaultData)
           editable.value = {}
-          Modal.getOrCreateInstance('#modal').hide()
+          Modal.getOrCreateInstance('#vaultForm').hide()
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'aw shucks')

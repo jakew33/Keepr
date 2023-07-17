@@ -78,7 +78,8 @@ public class KeepsRepository
     name = @name,
     creatorId = @creatorId,
     description = @description,
-    img = @img
+    img = @img,
+    views = @views
     WHERE id = @id
     ;";
 

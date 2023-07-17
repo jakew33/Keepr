@@ -24,6 +24,7 @@ public class KeepsService
   internal Keep GetById(int keepId, string userId)
   {
     Keep keep = _repo.GetById(keepId);
+    keep.Views++;
     if (keep == null)
     {
       throw new Exception("No Keep here, fam");
@@ -49,6 +50,7 @@ public class KeepsService
     original.Name = keepData.Name != null ? keepData.Name : original.Name;
     original.Description = keepData.Description != null ? keepData.Description : original.Description;
     original.Img = keepData.Img != null ? keepData.Img : original.Img;
+    // original.Views = keepData.Views != null ? keepData.Views : original.Views;
 
     _repo.EditKeep(original);
     return original;
