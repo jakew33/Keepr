@@ -11,8 +11,8 @@
       </div>
 
       <div class="row my-3">
-        <div class="col-md-8 m-auto" v-for="p in projects" :key="p.id">
-          <ProjectCard :project="p" />
+        <div class="col-md-8 m-auto" v-for="vk in vaultKeeps" :key="vk.id">
+          <VkCard :vaultKeep="vk" />
         </div>
       </div>
 
@@ -30,7 +30,7 @@ import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState.js'
 import { profileService } from '../services/ProfileService.js'
-import { projectsService } from '../services/ProjectsService.js'
+
 import Pop from '../utils/Pop.js'
 
 export default {
@@ -45,24 +45,18 @@ export default {
       }
     }
 
-    async function getProjectsByProfile() {
-      try {
-        await projectsService.getProjectsByProfile(route.params.id)
-      } catch (error) {
-        Pop.error(error, '[Getting Projects]')
-      }
-    }
+
 
 
     onMounted(() => {
       getProfile()
-      getProjectsByProfile()
+
     })
 
 
     return {
       profile: computed(() => AppState.activeProfile),
-      projects: computed(() => AppState.projects)
+
 
     }
   }
