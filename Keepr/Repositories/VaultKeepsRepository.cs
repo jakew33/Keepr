@@ -29,15 +29,17 @@ public class VaultKeepsRepository
   //   string sql = @"
   //   SELECT
   //   k.*,
+  //   v.*,
   //   acct.*
   //   FROM keeps k
   //   JOIN accounts acct ON acct.id = k.creatorId
+  //   JOIN vaults 
   //   WHERE k.vaultId = @vaultId
   //   ;";
 
-  //   List<Keep> keeps = _db.Query<Keep, Vault, Keep>(sql, (k, acct) =>
+  //   List<Keep> keeps = _db.Query<VaultKeep, Keep, VaultKeep>(sql, (k, acct) =>
   //   {
-  //     k.Creator = vault;
+  //     keep.vaultKeepId = vaultKeep.Id;
   //     return k;
   //   }, new { vaultId }).ToList();
 

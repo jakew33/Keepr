@@ -9,9 +9,9 @@ public class ProfilesRepository
     _db = db;
   }
 
-  internal Account GetById(string id)
+  internal Profile GetById(string id)
   {
-    string sql = "SELECT * FROM accounts WHERE id = @id";
-    return _db.QueryFirstOrDefault<Account>(sql, new { id });
+    string sql = "SELECT * FROM profiles WHERE id = @id";
+    return _db.QueryFirstOrDefault<Profile>(sql, new { id });
   }
 }
