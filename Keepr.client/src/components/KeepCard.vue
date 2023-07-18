@@ -4,14 +4,17 @@
     <div class="card-img-overlay">
       <div class="d-flex justify-content-around p-1">
       </div>
-      <h3 class="align-text-bottom p-2 rounded">
-        {{ keep.name }}</h3>
+      <h3 class="align-text-bottom p-2 rounded bottom-title">
+        {{ keep.name }}
+      </h3>
     </div>
   </div>
   <div v-if="keep.creatorId == account.id" class="d-flex justify-content-around">
     <button class="btn btn-dark elevation-5 text-white" @click="deleteKeep()">Delete Keep</button>
   </div>
 </template>
+
+
 
 
 <script>
@@ -64,4 +67,13 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.bottom-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+</style>

@@ -14,8 +14,7 @@ public class ProfilesController : ControllerBase
     _auth = auth;
   }
 
-  [HttpGet]
-  [Authorize]
+  [HttpGet("{profileId}")]
 
   public async Task<ActionResult<Profile>> GetById()
   {
