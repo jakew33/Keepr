@@ -88,19 +88,19 @@ public class VaultsController : ControllerBase
     }
   }
 
-  // [HttpGet("{vaultId}/keeps")]
-  // [Authorize]
-  // public ActionResult<List<VaultKeep>> GetKeepsInVault(int vaultId)
-  // {
-  //   try
-  //   {
-  //     List<VaultKeep> keeps = _vaultKeepsService.GetKeepsInVault(vaultId);
-  //     return keeps;
-  //   }
-  //   catch (Exception e)
-  //   {
-  //     return BadRequest(e.Message);
-  //   }
-  // }
+  [HttpGet("{vaultId}/keeps")]
+  [Authorize]
+  public ActionResult<List<KeepsInVault>> GetKeepsInVault(int vaultId)
+  {
+    try
+    {
+      List<KeepsInVault> keeps = _vaultKeepsService.GetKeepsInVault(vaultId);
+      return Ok(keeps);
+    }
+    catch (Exception e)
+    {
+      return BadRequest(e.Message);
+    }
+  }
 
 }

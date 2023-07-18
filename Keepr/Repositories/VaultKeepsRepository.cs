@@ -12,9 +12,9 @@ public class VaultKeepsRepository
   {
     string sql = @"
     INSERT INTO vaultKeeps
-    (vaultId, keepId, creatorId, id, vaultKeepId)
+    (vaultId, keepId, creatorId, id)
     VALUES
-    (@VaultId, @KeepId, @CreatorId, @Id, @VaultKeepId);
+    (@VaultId, @KeepId, @CreatorId, @Id);
     SELECT 
     LAST_INSERT_ID()
     ;";
@@ -24,7 +24,6 @@ public class VaultKeepsRepository
     return vkData;
   }
 
-  //TODO GET THIS TO WORK
   internal List<KeepsInVault> GetKeepsInVault(int vaultId)
   {
     string sql = @"
