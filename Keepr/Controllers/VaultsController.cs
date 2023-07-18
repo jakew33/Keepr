@@ -90,11 +90,11 @@ public class VaultsController : ControllerBase
 
   // [HttpGet("{vaultId}/keeps")]
   // [Authorize]
-  // public ActionResult<List<Keep>> GetKeepsInVault(int vaultId)
+  // public ActionResult<List<VaultKeep>> GetKeepsInVault(int vaultId)
   // {
   //   try
   //   {
-  //     List<Keep> keeps = _vaultKeepsService.GetKeepsInVault(vaultId);
+  //     List<VaultKeep> keeps = _vaultKeepsService.GetKeepsInVault(vaultId);
   //     return keeps;
   //   }
   //   catch (Exception e)

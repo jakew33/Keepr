@@ -8,3 +8,8 @@ public class VaultKeep
   public int KeepId { get; set; }
 }
 
+// public class KeepsInVault : VaultKeep
+// {
+//   public int VaultKeepId { get; set; }
+// }
+

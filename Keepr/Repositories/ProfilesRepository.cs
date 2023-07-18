@@ -15,21 +15,21 @@ public class ProfilesRepository
     return _db.QueryFirstOrDefault<Profile>(sql, new { id });
   }
 
-  internal List<Keep> GetProfileKeeps()
-  {
-    string sql = @"
-    SELECT
-    k.*
-    creator.*
-    FROM keeps k
-    JOIN accounts creator ON k.creatorId = creator.id
-    ;";
+  // internal List<Keep> GetUserKeeps()
+  // {
+  //   string sql = @"
+  //   SELECT
+  //   k.*
+  //   creator.*
+  //   FROM keeps k
+  //   JOIN accounts creator ON k.creatorId = creator.id
+  //   ;";
 
-    List<Keep> keeps = _db.Query<Keep, Account, Keep>(sql, (keep, creator) =>
-    {
-      keep.Creator = creator;
-      return keep;
-    }).ToList();
-    return keeps;
-  }
+  //   List<Keep> keeps = _db.Query<Keep, Account, Keep>(sql, (keep, creator) =>
+  //   {
+  //     keep.Creator = creator;
+  //     return keep;
+  //   }).ToList();
+  //   return keeps;
+  // }
 }

@@ -11,7 +11,7 @@ public class Vault
   public Account Creator { get; set; }
 }
 
-public class KeepsInVault : Vault
-{
-  public int VaultKeepId { get; set; }
-}
+// public class KeepsInVault : Vault
+// {
+//   public int VaultKeepId { get; set; }
+// }

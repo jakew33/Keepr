@@ -64,4 +64,12 @@ public class KeepsService
     int rows = _repo.DeleteKeep(keepId);
     if (rows > 1) new Exception("I dunno");
   }
+
+  // internal void DeleteVk(int vkId, string userId)
+  // {
+  //   VaultKeep vk = GetById(vkId);
+  //   if (vk.CreatorId != userId) throw new Exception("Go away");
+  //   int rows = _repo.DeleteVk(vkId);
+  //   if (rows > 1) new Exception("oops");
+  // }
 }

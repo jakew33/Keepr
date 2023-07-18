@@ -20,9 +20,9 @@ public class VaultKeepsService
     return newVk;
   }
 
-  // internal List<Keep> GetKeepsInVault(int vaultId)
+  // internal List<VaultKeep> GetKeepsInVault(int vaultId)
   // {
-  //   List<Keep> keeps = _repo.GetKeepsInVault(vaultId);
+  //   List<VaultKeep> keeps = _repo.GetKeepsInVault(vaultId);
   //   return keeps;
   // }
 

@@ -12,9 +12,9 @@ public class VaultKeepsRepository
   {
     string sql = @"
     INSERT INTO vaultKeeps
-    (vaultId, keepId, creatorId, id)
+    (vaultId, keepId, creatorId, id, vaultKeepId)
     VALUES
-    (@VaultId, @KeepId, @CreatorId, @Id);
+    (@VaultId, @KeepId, @CreatorId, @Id, @VaultKeepId);
     SELECT 
     LAST_INSERT_ID()
     ;";
@@ -31,15 +31,17 @@ public class VaultKeepsRepository
   //   k.*,
   //   v.*,
   //   acct.*
-  //   FROM keeps k
-  //   JOIN accounts acct ON acct.id = k.creatorId
-  //   JOIN vaults 
-  //   WHERE k.vaultId = @vaultId
+  //   FROM keeps vk
+  //   JOIN vaultKeeps vk ON k.id = vk.keepId
+  //   JOIN vault v ON vk vaultId = v.Id
+  //   JOIN accounts acct ON acct.id = v.creatorId
+  //   WHERE vk.vaultId = @vaultId
   //   ;";
 
-  //   List<Keep> keeps = _db.Query<VaultKeep, Keep, VaultKeep>(sql, (k, acct) =>
+  //   List<VaultKeep> keeps = _db.Query<VaultKeep, Keep, VaultKeep, Account>(sql, (k, vk, acct) =>
   //   {
-  //     keep.vaultKeepId = vaultKeep.Id;
+  //     k.CreatorId = .Id;
+  //     vk.Id = vk.Id;
   //     return k;
   //   }, new { vaultId }).ToList();
 
@@ -55,7 +57,7 @@ public class VaultKeepsRepository
     creator.*
     FROM vaultKeeps vk
     JOIN accounts creator ON vk.creatorId = creator.id
-    WHERE vk.id = @vaultKeepId
+    WHERE vk.id = @VaultKeepId
     ;";
 
     VaultKeep vk = _db.Query<VaultKeep>(sql, new { vkId }).FirstOrDefault();
@@ -66,7 +68,7 @@ public class VaultKeepsRepository
   {
     string sql = @"
     DELETE FROM vaultKeeps
-    WHERE id = @vaultKeepId LIMIT 1
+    WHERE id = @keepId LIMIT 1
     ;";
 
     int rows = _db.Execute(sql, new { vkId });
