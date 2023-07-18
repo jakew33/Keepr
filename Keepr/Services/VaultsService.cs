@@ -20,12 +20,12 @@ public class VaultsService
     Vault vault = _repo.getById(vaultId);
     if (vault == null)
     {
-      throw new Exception($"{vaultId}: Whoops");
+      throw new Exception("bruh");
     }
 
     if (userId != vault.CreatorId)
     {
-      throw new Exception("bruh");
+      throw new Exception("Get Outta Here!");
     }
     return vault;
   }

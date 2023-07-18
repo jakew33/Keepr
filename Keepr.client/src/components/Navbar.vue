@@ -9,22 +9,22 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'Home' }" class="btn text-black">
+          <router-link :to="{ name: 'Home' }" class="btn text-black color">
             Home
           </router-link>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle text-black" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Create
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item text-black" data-bs-toggle="modal" data-bs-target="#modal">Create Keep</a></li>
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#vaultForm">Create Vault</a></li>
-            </ul>
-          </div>
           <!-- <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">Create A Keep</button> -->
         </li>
       </ul>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle text-black mx-5 color" type="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Create
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item text-black" data-bs-toggle="modal" data-bs-target="#modal">Create Keep</a></li>
+          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#vaultForm">Create Vault</a></li>
+        </ul>
+      </div>
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
@@ -50,11 +50,11 @@ a:hover {
   text-transform: uppercase;
 }
 
-.navbar-nav .router-link-exact-active {
+/* .navbar-nav .router-link-exact-active {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-}
+} */
 
 @media screen and (min-width: 768px) {
   nav {
@@ -65,5 +65,14 @@ a:hover {
     box-shadow: 0px 0px 9px 0px #00000040;
 
   }
+}
+
+.navbar-color {
+  background-color: #fef0f0;
+  border-style: ridge;
+}
+
+.color {
+  background-color: #cab2b0;
 }
 </style>
