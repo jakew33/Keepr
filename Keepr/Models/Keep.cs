@@ -8,13 +8,13 @@ public class Keep
   public string Description { get; set; }
   public string Img { get; set; }
   public int Views { get; set; }
-  // public int Kept { get; set; }
+  public int Kept { get; set; }
 
   public Account Creator { get; set; }
-  public Account Kept { get; set; }
+  // public Account Kept { get; set; }
 
-  public class KeepsInVault : Keep
-  {
-    public int VaultKeepId { get; set; }
-  }
+}
+public class KeepsInVault : Keep
+{
+  public int VaultKeepId { get; set; }
 }

@@ -1,5 +1,5 @@
 <template>
-  <template>
+  <!-- <template>
     <div class="card">
       <div class="card-body">
         <div class="profile-card mb-2 text-center">
@@ -10,13 +10,15 @@
         <p><b>{{ profile.name }}</b></p>
       </div>
     </div>
-  </template>
+  </template> -->
+  <div></div>
 </template>
 
 
 <script>
 import { computed } from 'vue';
-import { Account, Profile } from "../models/Account.js";
+import { Account } from "../models/Account.js";
+import { Profile } from "../models/Profile.js";
 export default {
   props: {
     profile: { type: [Profile, Account], required: true }

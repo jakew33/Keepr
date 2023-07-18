@@ -23,7 +23,7 @@ public class VaultsService
       throw new Exception("bruh");
     }
 
-    if (userId != vault.CreatorId)
+    if (userId != vault.CreatorId && vault.IsPrivate)
     {
       throw new Exception("Get Outta Here!");
     }

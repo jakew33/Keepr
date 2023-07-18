@@ -15,7 +15,7 @@ public class ProfilesController : ControllerBase
   }
 
   [HttpGet("{profileId}")]
-
+  [Authorize]
   public async Task<ActionResult<Profile>> GetById()
   {
     try

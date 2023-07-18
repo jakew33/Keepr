@@ -14,7 +14,7 @@ class AccountService {
   }
 
   async editAccount(formData) {
-    const res = await api.put('/account', { ...formData, github: formData.socialPlatform })
+    const res = await api.put('/account', { ...formData })
     AppState.account = new Account(res.data)
   }
 }

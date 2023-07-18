@@ -29,10 +29,6 @@ public class KeepsService
       throw new Exception("No Keep here, fam");
     }
 
-    if (userId != keep.CreatorId)
-    {
-      throw new Exception("whoops");
-    }
     keep.Views++;
     _repo.EditKeep(keep);
     return keep;

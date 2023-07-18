@@ -24,29 +24,26 @@ public class VaultKeepsRepository
     return vkData;
   }
 
-  // internal List<VaultKeep> GetKeepsInVault(int vaultId)
-  // {
-  //   string sql = @"
-  //   SELECT
-  //   k.*,
-  //   v.*,
-  //   acct.*
-  //   FROM keeps vk
-  //   JOIN vaultKeeps vk ON k.id = vk.keepId
-  //   JOIN vault v ON vk vaultId = v.Id
-  //   JOIN accounts acct ON acct.id = v.creatorId
-  //   WHERE vk.vaultId = @vaultId
-  //   ;";
+  //TODO GET THIS TO WORK
+  internal List<KeepsInVault> GetKeepsInVault(int vaultId)
+  {
+    string sql = @"
+    SELECT
+    vk.*,
+    k.*
+    FROM vaultKeeps vk
+    JOIN keeps k ON vk.keepId = k.id
+    WHERE vk.vaultId = @vaultId
+    ;";
 
-  //   List<VaultKeep> keeps = _db.Query<VaultKeep, Keep, VaultKeep, Account>(sql, (k, vk, acct) =>
-  //   {
-  //     k.CreatorId = .Id;
-  //     vk.Id = vk.Id;
-  //     return k;
-  //   }, new { vaultId }).ToList();
+    List<KeepsInVault> keeps = _db.Query<VaultKeep, KeepsInVault, KeepsInVault>(sql, (vk, kinv) =>
+    {
+      kinv.VaultKeepId = vk.Id;
+      return kinv;
+    }, new { vaultId }).ToList();
 
-  //   return keeps;
-  // }
+    return keeps;
+  }
 
   //TODO FIX WHATEVER'S WRONG WITH THIS
   internal VaultKeep GetById(int vkId)
