@@ -15,21 +15,34 @@ public class VaultsService
     return vault;
   }
 
-  internal Vault GetById(int vaultId)
+  internal Vault GetById(int vaultId, string userId)
   {
     Vault vault = _repo.getById(vaultId);
-    if (vault == null) throw new Exception($"{vaultId}: Whoops");
+    if (vault == null)
+    {
+      throw new Exception($"{vaultId}: Whoops");
+    }
+
+    if (userId != vault.CreatorId)
+    {
+      throw new Exception("bruh");
+    }
     return vault;
   }
 
-  internal Vault EditVault(Vault updateData)
+  internal Vault EditVault(Vault vaultData)
   {
-    Vault original = GetById(updateData.Id);
+    Vault original = GetById(vaultData.Id, vaultData.CreatorId);
 
-    original.CreatorId = updateData.CreatorId != null ? updateData.CreatorId : original.CreatorId;
-    original.Name = updateData.Name != null ? updateData.Name : original.Name;
-    original.Description = updateData.Description != null ? updateData.Description : original.Description;
-    original.Img = updateData.Img != null ? updateData.Img : original.Img;
+    if (original.CreatorId != vaultData.CreatorId)
+    {
+      throw new Exception("I don't know what to put here");
+    }
+
+    original.CreatorId = vaultData.CreatorId != null ? vaultData.CreatorId : original.CreatorId;
+    original.Name = vaultData.Name != null ? vaultData.Name : original.Name;
+    original.Description = vaultData.Description != null ? vaultData.Description : original.Description;
+    original.Img = vaultData.Img != null ? vaultData.Img : original.Img;
 
     _repo.EditVault(original);
     return original;
@@ -37,7 +50,7 @@ public class VaultsService
 
   internal void DeleteVault(int vaultId, string userId)
   {
-    Vault vault = GetById(vaultId);
+    Vault vault = GetById(vaultId, userId);
     if (vault.CreatorId != userId) throw new Exception("Intruder Alert");
     int rows = _repo.DeleteVault(vaultId);
     if (rows > 1) new Exception("Not sure what happened there, chief");

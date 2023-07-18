@@ -37,11 +37,13 @@ public class VaultsController : ControllerBase
   }
 
   [HttpGet("{vaultId}")]
-  public ActionResult<Vault> GetById(int vaultId)
+  public async Task<ActionResult<Vault>> GetById(int vaultId)
   {
     try
     {
-      Vault vault = _vaultsService.GetById(vaultId);
+      Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
+
+      Vault vault = _vaultsService.GetById(vaultId, userInfo?.Id);
       return Ok(vault);
     }
     catch (Exception e)
@@ -52,12 +54,14 @@ public class VaultsController : ControllerBase
 
   [HttpPut("{vaultId}")]
   [Authorize]
-  public ActionResult<Vault> EditVault(int vaultId, [FromBody] Vault updateData)
+  public async Task<ActionResult<Vault>> EditVault(int vaultId, [FromBody] Vault vaultData)
   {
     try
     {
-      updateData.Id = vaultId;
-      Vault vault = _vaultsService.EditVault(updateData);
+      Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
+      vaultData.Id = vaultId;
+      vaultData.CreatorId = userInfo.Id;
+      Vault vault = _vaultsService.EditVault(vaultData);
       return Ok(vault);
     }
     catch (Exception e)
