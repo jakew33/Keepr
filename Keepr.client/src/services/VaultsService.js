@@ -9,6 +9,12 @@ class VaultsService {
     logger.log('[Creating Vault]', res.data)
     AppState.vaults.unshift(new Vault(res.data))
   }
+
+  async getAllVaults() {
+    const res = await api.get('api/vaults')
+    logger.log('Gettin Vaults', res.data)
+    AppState.vaults = res.data.map(v => new Vault(v))
+  }
 }
 
 export const vaultsService = new VaultsService()

@@ -1,9 +1,8 @@
 import { AppState } from "../AppState.js"
 import { Keep } from "../models/Keep.js"
+import { VaultKeep } from "../models/VaultKeep.js"
 import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
-
-
 
 class KeepsService {
   async getAllKeeps() {
@@ -34,6 +33,12 @@ class KeepsService {
     const res = await api.delete(`api/keeps/${keepId}`)
     AppState.keeps = AppState.keeps.filter(k => k.id != keepId)
     logger.log('[Deleting Keep]', res.data)
+  }
+
+  async getAllVks(keepId) {
+    const res = await api.get(`api/vaults/${keepId}`)
+    logger.log('Getting VaultKeeps', res.data)
+    AppState.vaultKeeps = res.data.map(vk => new VaultKeep(vk));
   }
 }
 

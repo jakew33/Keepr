@@ -26,16 +26,16 @@ public class VaultKeepsService
     return keeps;
   }
 
-  internal VaultKeep GetById(int vkId)
+  internal KeepsInVault GetById(int vkId)
   {
-    VaultKeep vk = _repo.GetById(vkId);
+    KeepsInVault vk = _repo.GetById(vkId);
     if (vk == null) new Exception("Invalid Id");
     return vk;
   }
 
   internal void DeleteVk(int vkId, string userId)
   {
-    VaultKeep vk = GetById(vkId);
+    KeepsInVault vk = GetById(vkId);
     if (vk.CreatorId != userId) throw new Exception("Go away");
     int rows = _repo.DeleteVk(vkId);
     if (rows > 1) new Exception("oops");

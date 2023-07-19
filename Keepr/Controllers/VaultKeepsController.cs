@@ -30,11 +30,11 @@ public class VaultKeepsController : ControllerBase
   }
 
   [HttpGet("{VaultKeepId}")]
-  public ActionResult<VaultKeep> GetById(int vkId)
+  public ActionResult<KeepsInVault> GetById(int vkId)
   {
     try
     {
-      VaultKeep vk = _vaultKeepsService.GetById(vkId);
+      KeepsInVault vk = _vaultKeepsService.GetById(vkId);
       return Ok(vk);
     }
     catch (Exception e)
@@ -45,7 +45,7 @@ public class VaultKeepsController : ControllerBase
 
   [HttpDelete("{vaultKeepId}")]
   [Authorize]
-  public async Task<ActionResult<VaultKeep>> DeleteVk(int vkId)
+  public async Task<ActionResult<KeepsInVault>> DeleteVk(int vkId)
   {
     try
     {

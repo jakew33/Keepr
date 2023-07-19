@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-color border-1 px-3">
+  <nav class="navbar navbar-expand-lg navbar-color border border-primary px-3">
     <!-- <router-link class="btn navbar-brand d-flex" :to="{ name: 'Home' }">
     </router-link> -->
     <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"

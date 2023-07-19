@@ -29,15 +29,18 @@ public class VaultKeepsRepository
     string sql = @"
     SELECT
     vk.*,
-    k.*
+    k.*,
+    acct.*
     FROM vaultKeeps vk
     JOIN keeps k ON vk.keepId = k.id
+    JOIN accounts acct ON acct.id = vk.creatorId
     WHERE vk.vaultId = @vaultId
     ;";
 
-    List<KeepsInVault> keeps = _db.Query<VaultKeep, KeepsInVault, KeepsInVault>(sql, (vk, kinv) =>
+    List<KeepsInVault> keeps = _db.Query<VaultKeep, KeepsInVault, Account, KeepsInVault>(sql, (vk, kinv, acct) =>
     {
       kinv.VaultKeepId = vk.Id;
+      kinv.Creator = acct;
       return kinv;
     }, new { vaultId }).ToList();
 
@@ -45,7 +48,7 @@ public class VaultKeepsRepository
   }
 
   //TODO FIX WHATEVER'S WRONG WITH THIS
-  internal VaultKeep GetById(int vkId)
+  internal KeepsInVault GetById(int vkId)
   {
     string sql = @"
     SELECT
@@ -53,10 +56,10 @@ public class VaultKeepsRepository
     creator.*
     FROM vaultKeeps vk
     JOIN accounts creator ON vk.creatorId = creator.id
-    WHERE vk.id = @VaultKeepId
+    WHERE vk.keepId = @KeepId
     ;";
 
-    VaultKeep vk = _db.Query<VaultKeep>(sql, new { vkId }).FirstOrDefault();
+    KeepsInVault vk = _db.Query<KeepsInVault>(sql, new { vkId }).FirstOrDefault();
     return vk;
   }
 
