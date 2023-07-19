@@ -33,11 +33,12 @@ public class VaultKeepsService
     return vk;
   }
 
-  internal void DeleteVk(int vkId, string userId)
+  internal string DeleteVk(int kinvId, string userId)
   {
-    KeepsInVault vk = GetById(vkId);
-    if (vk.CreatorId != userId) throw new Exception("Go away");
-    int rows = _repo.DeleteVk(vkId);
+    KeepsInVault kinv = GetById(kinvId);
+    if (kinv.CreatorId != userId) throw new Exception("Go away");
+    int rows = _repo.DeleteVk(kinvId);
     if (rows > 1) new Exception("oops");
+    return ("Removed vaultkeep");
   }
 }

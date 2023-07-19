@@ -44,12 +44,20 @@ public class AccountsRepository
     return update;
   }
 
-  // internal List<Vault> GetMyVaults(string accountId)
-  // {
-  //   string sql = @"
-  //   SELECT
-
-  //   ;";
-  // }
+  internal List<Vault> GetMyVaults(string creatorId)
+  {
+    string sql = @"
+    SELECT
+    *
+    FROM vaults v
+    JOIN accounts act ON v.id = creator.vaultId
+    WHERE v.creatorId = @creatorId
+    ;";
+    return _db.Query<Vault, Account, Vault>(sql, (vault, act) =>
+    {
+      vault.Creator = act;
+      return vault;
+    }, new { creatorId }).ToList();
+  }
 }
 

@@ -18,7 +18,10 @@
           rows="10">Description</textarea>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="form-check form-switch m-3">
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+          <label class="form-check-label" for="flexSwitchCheckChecked">Make Vault Private?</label>
+        </div>
         <button type="submit" class="btn btn-success">Create Vault</button>
       </div>
     </form>
@@ -46,7 +49,7 @@ export default {
           Modal.getOrCreateInstance('#vaultForm').hide()
         } catch (error) {
           logger.error(error)
-          Pop.toast(error.message, 'aw shucks')
+          Pop.toast(error.message, 'didnt work')
 
         }
       }

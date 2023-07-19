@@ -10,6 +10,11 @@ class VaultsService {
     AppState.vaults.unshift(new Vault(res.data))
   }
 
+  async getVaultById(vaultId) {
+    const res = await api.get(`api/vaults/${vaultId}`)
+    logger.log('get vault by id', res.data)
+  }
+
   async getAllVaults() {
     const res = await api.get('api/vaults')
     logger.log('Gettin Vaults', res.data)

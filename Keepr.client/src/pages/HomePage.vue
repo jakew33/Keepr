@@ -10,11 +10,11 @@
     </div>
   </div>
 
-  <div class="row my-3">
+  <!-- <div class="row my-3">
     <div class="col-md-4" v-for="v in vaults" :key="v.id">
       <KeepCard :vault="v" />
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -38,15 +38,15 @@ export default {
       }
     }
 
-    async function getAllVaults() {
-      try {
-        logger.log('Getting Vaults')
-        await vaultsService.getAllVaults()
-      } catch (error) {
-        Pop.error(error.message)
-        logger.log(error)
-      }
-    }
+    // async function getAllVaults() {
+    //   try {
+    //     logger.log('Getting Vaults')
+    //     await vaultsService.getAllVaults()
+    //   } catch (error) {
+    //     Pop.error(error.message)
+    //     logger.log(error)
+    //   }
+    // }
 
     onMounted(() => {
       getAllKeeps()

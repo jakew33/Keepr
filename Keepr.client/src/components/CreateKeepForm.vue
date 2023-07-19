@@ -17,10 +17,6 @@
         <textarea v-model="editable.description" class="form-control w-100" name="description" id="description" cols="30"
           rows="10">Description</textarea>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success">Create Keep</button>
-      </div>
     </form>
   </div>
 </template>

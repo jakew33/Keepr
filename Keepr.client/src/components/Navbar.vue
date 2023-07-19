@@ -12,19 +12,18 @@
           <router-link :to="{ name: 'Home' }" class="btn text-black color">
             Home
           </router-link>
-          <!-- <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal">Create A Keep</button> -->
         </li>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle text-black mx-5 color" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Create
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item text-black" data-bs-toggle="modal" data-bs-target="#modal">Create Keep</a></li>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#vaultForm">Create Vault</a></li>
+          </ul>
+        </div>
       </ul>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle text-black mx-5 color" type="button" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          Create
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item text-black" data-bs-toggle="modal" data-bs-target="#modal">Create Keep</a></li>
-          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#vaultForm">Create Vault</a></li>
-        </ul>
-      </div>
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
