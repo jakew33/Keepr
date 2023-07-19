@@ -10,6 +10,7 @@
       <KeepCard :vault="v" />
     </div>
   </div>
+  <AccountForm />
 </template>
 
 <script>
