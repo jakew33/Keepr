@@ -16,37 +16,13 @@
 <script>
 import { computed, onMounted, ref } from 'vue'
 import { AppState } from '../AppState'
-import { logger } from "../utils/Logger.js"
-import Pop from "../utils/Pop.js"
-import { vaultsService } from "../services/VaultsService.js"
+
 export default {
   setup() {
-    const filterBy = ref('')
-
-    async function getAllVaults() {
-      try {
-        logger.log('Getting Vaults')
-        await vaultsService.getAllVaults()
-      } catch (error) {
-        Pop.error(error.message)
-        logger.log(error)
-      }
-    }
-
-    onMounted(() => {
-      getAllVaults()
-    })
-
     return {
-      filterBy,
       account: computed(() => AppState.account),
-      vaults: computed(() => {
-        if (filterBy.value == "") {
-          return AppState.vaults
-        } else {
-          return AppState.vaults.filter(v => v.name == filterBy.value)
-        }
-      })
+      vaults: computed(() => AppState.myVaults),
+      keeps: computed(() => AppState.myKeeps)
     }
   }
 }

@@ -22,7 +22,7 @@ public class ProfilesRepository
     Keep keep = _db.Query<Keep>(sql, new { id }).FirstOrDefault();
     return keep;
   }
-  internal List<Keep> GetUserKeeps(int vaultId)
+  internal List<Keep> GetUserKeeps(string profileId)
   {
     string sql = @"
     SELECT
@@ -30,14 +30,14 @@ public class ProfilesRepository
     acct.*
     FROM keeps k
     JOIN accounts acct ON acct.id = k.creatorId
-    WHERE k.vaultId = @vaultId
+    WHERE k.creatorId = @profileId
     ;";
 
     List<Keep> keeps = _db.Query<Keep, Account, Keep>(sql, (keep, creator) =>
     {
       keep.Creator = creator;
       return keep;
-    }).ToList();
+    }, new { profileId }).ToList();
     return keeps;
   }
 }

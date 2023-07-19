@@ -44,14 +44,14 @@ public class AccountController : ControllerBase
     }
   }
 
-  [HttpPut("{accountId}")]
+  [HttpPut]
   [Authorize]
-  public ActionResult<Account> Edit(string userEmail, [FromBody] Account editData)
+  async public Task<ActionResult<Account>> Edit([FromBody] Account editData)
   {
     try
     {
-      editData.Id = userEmail;
-      Account account = _accountService.Edit(editData, userEmail);
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      Account account = _accountService.Edit(editData, userInfo.Email);
       return Ok(account);
     }
     catch (Exception e)

@@ -15,13 +15,11 @@ public class ProfilesController : ControllerBase
   }
 
   [HttpGet("{profileId}")]
-  [Authorize]
-  public async Task<ActionResult<Profile>> GetProfileById()
+  public ActionResult<Profile> GetProfileById(string id)
   {
     try
     {
-      Profile userInfo = await _auth.GetUserInfoAsync<Profile>(HttpContext);
-      return Ok(_profilesService.GetProfileById(userInfo));
+      return Ok(_profilesService.GetProfileById(id));
     }
     catch (Exception e)
     {
@@ -30,14 +28,14 @@ public class ProfilesController : ControllerBase
   }
 
   [HttpGet("{profileId}/keeps")]
-  public async Task<ActionResult<List<Keep>>> GetUserKeeps(int vaultId)
+  public async Task<ActionResult<List<Keep>>> GetUserKeeps(string profileId)
   {
     try
     {
       Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
-      List<Keep> keeps = _profilesService.GetUserKeeps(vaultId, userInfo?.Id);
+      List<Keep> keeps = _profilesService.GetUserKeeps(profileId, userInfo?.Id);
 
-      return (Ok(keeps));
+      return Ok(keeps);
     }
     catch (Exception e)
     {

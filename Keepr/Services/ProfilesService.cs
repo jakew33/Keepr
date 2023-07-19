@@ -11,9 +11,9 @@ public class ProfilesService
     _vaultsService = vaultsService;
   }
 
-  internal Profile GetProfileById(Profile userInfo)
+  internal Profile GetProfileById(string id)
   {
-    Profile profile = _repo.GetProfileById(userInfo.Id);
+    Profile profile = _repo.GetProfileById(id);
     return profile;
   }
 
@@ -27,11 +27,9 @@ public class ProfilesService
     return keep;
   }
 
-  internal List<Keep> GetUserKeeps(int vaultId, string userId)
+  internal List<Keep> GetUserKeeps(string profileId, string userId)
   {
-    _vaultsService.GetById(vaultId, userId);
-
-    List<Keep> keeps = _repo.GetUserKeeps(vaultId);
+    List<Keep> keeps = _repo.GetUserKeeps(profileId);
     return keeps;
   }
 }

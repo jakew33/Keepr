@@ -6,17 +6,29 @@ export const AppState = reactive({
   /** @type {import('./models/Account.js').Account} */
   account: {},
 
-  /** @type {import('./models/Keep.js').Keep} */
+  // This is for the homepage
+  /** @type {import('./models/Keep.js').Keep[]} */
   keeps: [],
-  myKeeps: [],
+  // this is for the KeepModal
   activeKeep: null,
 
-  /** @type {import('./models/Vault.js').Vault} */
-  vaults: [],
+  // REVIEW YOU CAN FILL THESE OUT ANYTIME THE USER AUTHENTICATES
+  /** @type {import('./models/Vault.js').Vault[]} */
+  myVaults: [],
+  /** @type {import('./models/Keep.js').Keep[]} */
+  myKeeps: [],
 
+  // SECTION for the Vault Page
   /** @type {import('./models/VaultKeep.js').VaultKeep} */
+  activeVault: null,
   vaultKeeps: [],
+  activeVaultKeep: null,
 
+  // SECTION THESE ARE FOR THE PROFILE PAGE (AKA SOMEONE ELSE)
   /** @type {import('./models/Profile.js').Profile | null} */
-  activeProfile: null
+  activeProfile: null,
+  /** @type {import('./models/Vault.js').Vault[]} */
+  activeProfileVaults: [],
+  /** @type {import('./models/Keep.js').Keep[]} */
+  activeProfileKeeps: [],
 })

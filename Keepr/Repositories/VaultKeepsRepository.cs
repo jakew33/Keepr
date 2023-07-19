@@ -54,7 +54,7 @@ public class VaultKeepsRepository
     SELECT
     *
     FROM vaultKeeps 
-    WHERE id = @VaultKeepId
+    WHERE id = @VaultK`Id
     ;";
     KeepsInVault kinv = _db.Query<KeepsInVault>(sql, new { kinvId }).FirstOrDefault();
     return kinv;

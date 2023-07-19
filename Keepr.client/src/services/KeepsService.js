@@ -11,10 +11,10 @@ class KeepsService {
     AppState.keeps = res.data.map(k => new Keep(k))
   }
 
-  async getKeepById(keepId) {
-    const res = await api.get(`api/keeps/${keepId}`)
-    logger.log('getting keep by id', res.data)
-  }
+  // async getKeepById(keepId) {
+  //   const res = await api.get(`api/keeps/${keepId}`)
+  //   logger.log('getting keep by id', res.data)
+  // }
 
   async setActiveKeep(keepId) {
     // const keep = AppState.keeps.find(k => k.id == keepId)
@@ -35,6 +35,7 @@ class KeepsService {
     logger.log('[Deleting Keep]', res.data)
   }
 
+  // FIXME rename to getVaultKeepsByVaultId
   async getAllVks(keepId) {
     const res = await api.get(`api/vaults/${keepId}`)
     logger.log('Getting VaultKeeps', res.data)

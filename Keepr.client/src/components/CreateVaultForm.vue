@@ -19,7 +19,8 @@
       </div>
       <div class="modal-footer">
         <div class="form-check form-switch m-3">
-          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked
+            v-model="editable.isPrivate">
           <label class="form-check-label" for="flexSwitchCheckChecked">Make Vault Private?</label>
         </div>
         <button type="submit" class="btn btn-success">Create Vault</button>
