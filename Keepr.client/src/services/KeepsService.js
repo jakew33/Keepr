@@ -36,7 +36,7 @@ class KeepsService {
   }
 
   // FIXME rename to getVaultKeepsByVaultId
-  async getAllVks(keepId) {
+  async getVaultKeepsByVaultId(keepId) {
     const res = await api.get(`api/vaults/${keepId}`)
     logger.log('Getting VaultKeeps', res.data)
     AppState.vaultKeeps = res.data.map(vk => new VaultKeep(vk));

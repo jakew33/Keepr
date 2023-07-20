@@ -5,6 +5,7 @@ export const AppState = reactive({
   user: {},
   /** @type {import('./models/Account.js').Account} */
   account: {},
+  profile: {},
 
   // This is for the homepage
   /** @type {import('./models/Keep.js').Keep[]} */

@@ -1,12 +1,14 @@
 <template>
-  <div class="card text-white keep-card my-3 bg rounded " @click="setActiveKeep(keep.id)">
+  <div class="card text-white keep-card my-3 bg rounded position-relative" @click="setActiveKeep(keep.id)">
     <img class="rounded elevation-5" :src="keep.img" :alt="keep.name">
-    <div class="card-img-overlay">
-      <div class="d-flex justify-content-around p-1">
-      </div>
-      <h3 class="align-text-bottom p-2 rounded bottom-title">
-        {{ keep.name }}
-      </h3>
+
+    <div class="card-img-overlay d-flex flex-column justify-content-end">
+      <!-- Keep name at the bottom -->
+      <h3 class="bottom-title mb-3">{{ keep.name }}</h3>
+      <!-- Creator picture below the keep name -->
+      <router-link class="align-self-end" :to="{ name: 'Profile', params: { id: keep?.creatorId } }">
+        <img class="rounded-circle profile" :src="keep?.creator.picture" :alt="keep.name">
+      </router-link>
     </div>
   </div>
   <div v-if="keep.creatorId == account.id" class="d-flex justify-content-around">
@@ -69,11 +71,20 @@ export default {
 
 <style lang="scss" scoped>
 .bottom-title {
-  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.profile {
+  height: 100px;
+  aspect-ratio: 1/1;
+  object-fit: fit;
+  bottom: 0;
+  left: 0;
+  right: 100px;
+  padding: 1rem;
 }
 </style>

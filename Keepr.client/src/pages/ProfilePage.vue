@@ -8,11 +8,9 @@
             <ProfileCard :profile="profile" />
             <div class="card">
               <div class="profileCard text-center">
-                <p class="text-center mb-0">
-                  <img class="coverImg image-fluid" :src="profile.coverImg" alt="profile.name">
-                  <img class="rounded-circle profilePicture justify-content-start" :src="profile.picture"
-                    alt="profile.name">
-                </p>
+                <img class="coverImg image-fluid" :src="profile.coverImg" alt="profile.name">
+                <img class="rounded-circle profilePicture justify-content-start actPic" :src="profile.picture"
+                  alt="profile.name">
               </div>
             </div>
           </div>
@@ -20,7 +18,7 @@
       </div>
 
       <div class="row my-3">
-        <div class="col-md-8 m-auto" v-for="k in keeps" :key="k.id">
+        <div class="col-md-8 m-auto" v-for="v in vaults" :key="v.id">
           <KeepCard :keep="k" />
         </div>
       </div>
@@ -77,4 +75,9 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.actPic {
+  max-width: 100px;
+  aspect-ratio: 1/1;
+}
+</style>

@@ -46,7 +46,7 @@ CREATE TABLE
         keepId INT NOT NULL
     ) default charset utf8 COMMENT '';
 
-DROP TABLE `vaultKeeps`;
+DROP TABLE `keeps`;
 
 ALTER TABLE accounts
 ADD

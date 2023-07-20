@@ -1,6 +1,5 @@
 <template>
-  <form class="card elevation-5" @submit.prevent="handleSubmit">
-
+  <form class="card elevation-5 col-md-4 my-5" @submit.prevent="handleSubmit">
     <div class="card-body">
       <div class="form-floating mb-3">
         <input name="name" class="form-control" placeholder="Name" type="text" required v-model="editable.name">
@@ -18,9 +17,8 @@
       </div>
     </div>
     <div class="card-footer text-end">
-      <button class="btn btn-outline-primary" type="submit">Save Changes</button>
+      <button class="btn btn-outline-primary" type="submit">Save</button>
     </div>
-
   </form>
 </template>
 
