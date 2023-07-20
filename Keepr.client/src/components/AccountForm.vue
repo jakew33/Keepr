@@ -11,7 +11,7 @@
         <label for="picture">Picture:</label>
       </div>
       <div class="form-floating mb-3">
-        <input name="cover-img" class="form-control" placeholder="cover Image" type="url" required
+        <input name="cover-img" class="form-control" placeholder="Cover Image" type="url" required
           v-model="editable.coverImg">
         <label for="cover-img">Cover Image:</label>
       </div>

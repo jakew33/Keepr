@@ -11,9 +11,9 @@ public class ProfilesService
     _vaultsService = vaultsService;
   }
 
-  internal Profile GetProfileById(Profile userInfo)
+  internal Profile GetProfileById(string profileId)
   {
-    Profile profile = _repo.GetProfileById(userInfo.Id);
+    Profile profile = _repo.GetProfileById(profileId);
     return profile;
   }
 

@@ -40,6 +40,6 @@ export default {
   aspect-ratio: 1/1;
 }
 
-.cvrImg {}
+/* .cvrImg {} */
 </style>
 

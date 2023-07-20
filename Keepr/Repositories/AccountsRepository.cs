@@ -25,9 +25,9 @@ public class AccountsRepository
   {
     string sql = @"
             INSERT INTO accounts
-              (name, picture, email, id)
+              (name, picture, email, id, coverImg)
             VALUES
-              (@Name, @Picture, @Email, @Id)";
+              (@Name, @Picture, @Email, @Id, @CoverImg)";
     _db.Execute(sql, newAccount);
     return newAccount;
   }
@@ -38,7 +38,8 @@ public class AccountsRepository
             UPDATE accounts
             SET 
               name = @Name,
-              picture = @Picture
+              picture = @Picture,
+              coverImg = @CoverImg
             WHERE id = @Id;";
     _db.Execute(sql, update);
     return update;
@@ -50,8 +51,8 @@ public class AccountsRepository
     SELECT
     *
     FROM vaults v
-    JOIN accounts act ON v.id = creator.vaultId
-    WHERE v.creatorId = @creatorId
+    JOIN accounts act ON v.id = account
+    WHERE v.creatorId = @vaultId
     ;";
     return _db.Query<Vault, Account, Vault>(sql, (vault, act) =>
     {

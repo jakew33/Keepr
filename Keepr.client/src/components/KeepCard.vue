@@ -1,11 +1,8 @@
 <template>
   <div class="card text-white keep-card my-3 bg rounded position-relative" @click="setActiveKeep(keep.id)">
     <img class="rounded elevation-5" :src="keep.img" :alt="keep.name">
-
     <div class="card-img-overlay d-flex flex-column justify-content-end">
-      <!-- Keep name at the bottom -->
       <h3 class="bottom-title mb-3">{{ keep.name }}</h3>
-      <!-- Creator picture below the keep name -->
       <router-link class="align-self-end" :to="{ name: 'Profile', params: { id: keep?.creatorId } }">
         <img class="rounded-circle profile" :src="keep?.creator.picture" :alt="keep.name">
       </router-link>

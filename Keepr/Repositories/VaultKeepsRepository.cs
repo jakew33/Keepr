@@ -54,7 +54,7 @@ public class VaultKeepsRepository
     SELECT
     *
     FROM vaultKeeps 
-    WHERE id = @VaultK`Id
+    WHERE id = @KeepId
     ;";
     KeepsInVault kinv = _db.Query<KeepsInVault>(sql, new { kinvId }).FirstOrDefault();
     return kinv;
@@ -65,7 +65,7 @@ public class VaultKeepsRepository
     string sql = @"
     DELETE 
     FROM vaultKeeps 
-    WHERE id = @vaultKeepId LIMIT 1
+    WHERE id = @KeepId LIMIT 1
     ;";
 
     int rows = _db.Execute(sql, new { vaultKeepId });

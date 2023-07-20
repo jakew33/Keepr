@@ -3,32 +3,22 @@
 
     <div class="container">
       <div class="row mt-2" v-if="profile">
-        <div class="col-md-8 m-auto">
+        <div class="container text-center position-relative">
+          <img class="rounded cvrImg mx-auto d-block" :src="profile.coverImg" alt="" />
+          <div class="about position-absolute top-65 start-50 translate-middle my-3">
+            <img class="rounded-circle actPic" :src="profile.picture" alt="" />
+            <h1>{{ profile.name }}</h1>
+          </div>
           <div>
-            <ProfileCard :profile="profile" />
-            <div class="card">
-              <div class="profileCard text-center">
-                <img class="coverImg image-fluid" :src="profile.coverImg" alt="profile.name">
-                <img class="rounded-circle profilePicture justify-content-start actPic" :src="profile.picture"
-                  alt="profile.name">
-              </div>
-            </div>
           </div>
         </div>
       </div>
-
-      <div class="row my-3">
-        <div class="col-md-8 m-auto" v-for="v in vaults" :key="v.id">
-          <KeepCard :keep="k" />
-        </div>
-      </div>
-
     </div>
-
-
-
-
   </div>
+  <!-- <div class="row my-3">
+  <div class="col-md-8 m-auto" v-for="v in vaults" :key="v.id">
+    <KeepCard :keep="k" />
+  </div> -->
 </template>
 
 
@@ -40,6 +30,8 @@ import { profileService } from '../services/ProfileService.js'
 
 import Pop from '../utils/Pop.js'
 import { logger } from "../utils/Logger.js"
+// import { vaultsService } from "../services/VaultsService.js"
+// import { keepsService } from "../services/KeepsService.js"
 
 export default {
   setup() {
@@ -54,18 +46,39 @@ export default {
       }
     }
 
+    // async function getKeepsByProfile() {
+    //   try {
+    //     const keepId = route.params.activeProfileKeeps;
+    //     await keepsService.getKeepsByProfile(keepId)
+    //   } catch (error) {
+    //     Pop.error(error)
+    //   }
+    // }
+
+    // async function getVaultsByProfile() {
+    //   try {
+    //     const vaultId = route.params.activeProfileVaults;
+    //     await vaultsService.getVaultsByProfile(vaultId);
+    //   } catch (error) {
+    //     Pop.error(error)
+    //   }
+    // }
+
 
 
 
     onMounted(() => {
       getProfileById();
+      // getVaultsByProfile();
+      // getKeepsByProfile();
 
     })
 
 
     return {
       profile: computed(() => AppState.activeProfile),
-      keeps: computed(() => AppState.keeps),
+      // activeProfileKeeps: computed(() => AppState.activeProfileKeeps),
+      // activeProfileVaults: computed(() => AppState.activeProfileVaults),
 
 
     }
