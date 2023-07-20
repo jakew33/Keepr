@@ -1,5 +1,5 @@
 <template>
-  <form class="card elevation-1" @submit.prevent="handleSubmit">
+  <form class="card elevation-5" @submit.prevent="handleSubmit">
 
     <div class="card-body">
       <div class="form-floating mb-3">
@@ -18,9 +18,8 @@
       </div>
     </div>
     <div class="card-footer text-end">
-      <button class="btn btn-outline-primary" type="submit">Save Account</button>
+      <button class="btn btn-outline-primary" type="submit">Save Changes</button>
     </div>
-
 
   </form>
 </template>

@@ -17,6 +17,7 @@
         <textarea v-model="editable.description" class="form-control w-100" name="description" id="description" cols="30"
           rows="10">Description</textarea>
       </div>
+      <button type="submit" class="btn btn-success">Create Vault</button>
     </form>
   </div>
 </template>

@@ -11,25 +11,31 @@ public class ProfilesService
     _vaultsService = vaultsService;
   }
 
-  internal Profile GetProfileById(string id)
+  internal Profile GetProfileById(Profile userInfo)
   {
-    Profile profile = _repo.GetProfileById(id);
+    Profile profile = _repo.GetProfileById(userInfo.Id);
     return profile;
   }
 
-  internal Keep GetOneKeep(int id)
-  {
-    Keep keep = _repo.GetOneKeep(id);
-    if (keep == null)
-    {
-      throw new Exception("wrong.");
-    }
-    return keep;
-  }
+  // internal Keep GetOneKeep(int id)
+  // {
+  //   Keep keep = _repo.GetOneKeep(id);
+  //   if (keep == null)
+  //   {
+  //     throw new Exception("wrong.");
+  //   }
+  //   return keep;
+  // }
 
   internal List<Keep> GetUserKeeps(string profileId, string userId)
   {
     List<Keep> keeps = _repo.GetUserKeeps(profileId);
     return keeps;
+  }
+
+  internal List<Vault> GetUserVaults(string profileId, string userId)
+  {
+    List<Vault> vaults = _repo.GetUserVaults(profileId);
+    return vaults;
   }
 }
