@@ -48,27 +48,27 @@ public class VaultKeepsRepository
   }
 
   //TODO FIX WHATEVER'S WRONG WITH THIS
-  internal KeepsInVault GetById(int kinvId)
+  internal VaultKeep GetById(int vkId)
   {
     string sql = @"
     SELECT
-    *
-    FROM vaultKeeps 
-    WHERE id = @KeepId
+    vk.*
+    FROM vaultKeeps vk
+    WHERE vk.id = @vkId
     ;";
-    KeepsInVault kinv = _db.Query<KeepsInVault>(sql, new { kinvId }).FirstOrDefault();
-    return kinv;
+    VaultKeep vk = _db.Query<VaultKeep>(sql, new { vkId }).FirstOrDefault();
+    return vk;
   }
 
-  internal int DeleteVk(int vaultKeepId)
+  internal int DeleteVk(int vkId)
   {
     string sql = @"
     DELETE 
     FROM vaultKeeps 
-    WHERE id = @KeepId LIMIT 1
+    WHERE id = @vkId 
+    LIMIT 1
     ;";
-
-    int rows = _db.Execute(sql, new { vaultKeepId });
+    int rows = _db.Execute(sql, new { vkId });
     return rows;
   }
 }

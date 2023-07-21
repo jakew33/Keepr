@@ -3,9 +3,7 @@
     <img class="rounded elevation-5" :src="keep.img" :alt="keep.name">
     <div class="card-img-overlay d-flex flex-column justify-content-end">
       <h3 class="bottom-title mb-3">{{ keep.name }}</h3>
-      <router-link class="align-self-end" :to="{ name: 'Profile', params: { id: keep?.creatorId } }">
-        <img class="rounded-circle profile" :src="keep?.creator.picture" :alt="keep.name">
-      </router-link>
+      <img class="rounded-circle profile align-self-end" :src="keep?.creator.picture" :alt="keep.name">
     </div>
   </div>
   <div v-if="keep.creatorId == account.id" class="d-flex justify-content-around">

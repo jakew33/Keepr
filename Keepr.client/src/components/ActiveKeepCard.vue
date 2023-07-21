@@ -20,6 +20,9 @@
                   <p>{{ keep.description }}</p>
                 </div>
               </div>
+              <router-link class="align-self-end" :to="{ name: 'Profile', params: { id: keep?.creatorId } }">
+                <img class="rounded-circle profile" :src="keep?.creator.picture" :alt="keep.name">
+              </router-link>
 
             </div>
           </div>
@@ -52,14 +55,13 @@ export default {
 
 
 <style lang="scss" scoped>
-// .keep-card {
-//   box-shadow: 2px 2px white;
-
-
-//   img {
-//     height: 35vh;
-//     width: 100%;
-//     object-fit: cover;
-//   }
-// }
+.profile {
+  height: 100px;
+  aspect-ratio: 1/1;
+  object-fit: fit;
+  bottom: 0;
+  left: 0;
+  right: 100px;
+  padding: 1rem;
+}
 </style>

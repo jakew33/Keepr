@@ -15,10 +15,11 @@
       </div>
     </div>
   </div>
-  <!-- <div class="row my-3">
-  <div class="col-md-8 m-auto" v-for="v in vaults" :key="v.id">
-    <KeepCard :keep="k" />
-  </div> -->
+  <div class="row my-3">
+    <div class="col-md-8 m-auto" v-for="v in vaults" :key="v.id">
+      <VaultCard />
+    </div>
+  </div>
 </template>
 
 
@@ -30,8 +31,8 @@ import { profileService } from '../services/ProfileService.js'
 
 import Pop from '../utils/Pop.js'
 import { logger } from "../utils/Logger.js"
-// import { vaultsService } from "../services/VaultsService.js"
-// import { keepsService } from "../services/KeepsService.js"
+import { vaultsService } from "../services/VaultsService.js"
+import { keepsService } from "../services/KeepsService.js"
 
 export default {
   setup() {
@@ -55,21 +56,21 @@ export default {
     //   }
     // }
 
-    // async function getVaultsByProfile() {
-    //   try {
-    //     const vaultId = route.params.activeProfileVaults;
-    //     await vaultsService.getVaultsByProfile(vaultId);
-    //   } catch (error) {
-    //     Pop.error(error)
-    //   }
-    // }
+    async function getVaultsByProfile() {
+      try {
+        const vaultId = route.params.activeProfileVaults;
+        await vaultsService.getVaultsByProfile(vaultId);
+      } catch (error) {
+        Pop.error(error)
+      }
+    }
 
 
 
 
     onMounted(() => {
       getProfileById();
-      // getVaultsByProfile();
+      getVaultsByProfile();
       // getKeepsByProfile();
 
     })
@@ -77,8 +78,8 @@ export default {
 
     return {
       profile: computed(() => AppState.activeProfile),
-      // activeProfileKeeps: computed(() => AppState.activeProfileKeeps),
-      // activeProfileVaults: computed(() => AppState.activeProfileVaults),
+      activeProfileKeeps: computed(() => AppState.activeProfileKeeps),
+      activeProfileVaults: computed(() => AppState.activeProfileVaults),
 
 
     }

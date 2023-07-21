@@ -16,29 +16,36 @@ public class VaultKeepsService
 
   internal VaultKeep CreateVaultKeep(VaultKeep vkData)
   {
+    // Go get the vault that we are trying to create the vaultkeep for
+    // ** grab the vaultId from the data we are passing in
+    // If the user is not the creator of this vault, we should throw an error
     VaultKeep newVk = _repo.CreateVaultKeep(vkData);
     return newVk;
   }
 
-  internal List<KeepsInVault> GetKeepsInVault(int vaultId)
+  internal List<KeepsInVault> GetKeepsInVault(int vaultId, string userId)
   {
+    Vault vault = _vaultsService.GetById(vaultId, userId);
     List<KeepsInVault> keeps = _repo.GetKeepsInVault(vaultId);
+
+
+
     return keeps;
   }
 
-  internal KeepsInVault GetById(int vkId)
+  internal VaultKeep GetById(int vkId)
   {
-    KeepsInVault vk = _repo.GetById(vkId);
-    if (vk == null) new Exception("Invalid Id");
+    VaultKeep vk = _repo.GetById(vkId);
+    if (vk == null) new Exception("Wrong Id, chief");
     return vk;
   }
 
-  internal string DeleteVk(int kinvId, string userId)
+  internal string DeleteVk(int vkId, string userId)
   {
-    KeepsInVault kinv = GetById(kinvId);
-    if (kinv.CreatorId != userId) throw new Exception("Go away");
-    int rows = _repo.DeleteVk(kinvId);
+    VaultKeep vk = GetById(vkId);
+    if (vk.CreatorId != userId) throw new Exception("Go away");
+    int rows = _repo.DeleteVk(vkId);
     if (rows > 1) new Exception("oops");
-    return ("Removed vaultkeep");
+    return ("Removed VaultKeep");
   }
 }

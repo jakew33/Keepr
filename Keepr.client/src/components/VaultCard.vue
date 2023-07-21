@@ -9,15 +9,40 @@
     </div>
   </div>
   <div v-if="vault.creatorId == account.id" class="d-flex justify-content-around">
-    <!-- <button class="btn btn-dark elevation-5 text-white" @click="deleteKeep()">Delete Keep</button> -->
+    <!-- <button class="btn btn-dark elevation-5 text-white" @click="deleteVault()">Delete Vault</button> -->
   </div>
 </template>
 
 
 <script>
+import { computed } from "vue";
+import { AppState } from "../AppState.js";
+import { Vault } from "../models/Vault.js";
+import { vaultsService } from "../services/VaultsService.js";
+import { Modal } from "bootstrap";
+import { logger } from "../utils/Logger.js";
+import Pop from "../utils/Pop.js";
+
 export default {
-  setup() {
-    return {}
+  props: {
+    vault: { type: Vault, required: true }
+  },
+  setup(props) {
+
+    return {
+      account: computed(() => AppState.account),
+      vaults: computed(() => AppState.activeVault),
+
+      async setActiveVault(vaultId) {
+        try {
+          await vaultsService.setActiveVault(vaultId)
+          Modal.getOrCreateInstance('#activeVaultCard').show()
+        } catch (error) {
+          logger.log(error)
+          Pop.error(error)
+        }
+      }
+    }
   }
 };
 </script>

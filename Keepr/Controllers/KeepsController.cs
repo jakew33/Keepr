@@ -105,7 +105,7 @@ public class KeepsController : ControllerBase
   // {
   //   try
   //   {
-  //     List<VaultKeep> vks = _vaultKeepsService.GetVaultKeeps(keepId);
+  //     List<VaultKeep> vks = _vaultKeepsService.GetById(keepId);
   //     return Ok(vks);
   //   }
   //   catch (Exception e)

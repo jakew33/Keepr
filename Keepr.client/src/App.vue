@@ -14,6 +14,10 @@
     <ActiveKeepCard />
   </Modal>
 
+  <Modal id="activeVaultCard">
+    <ActiveVaultCard />
+  </Modal>
+
   <Modal id="vaultForm">
     <CreateVaultForm />
   </Modal>

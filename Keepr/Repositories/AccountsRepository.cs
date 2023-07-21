@@ -49,10 +49,11 @@ public class AccountsRepository
   {
     string sql = @"
     SELECT
-    *
+    v.*,
+    act.*
     FROM vaults v
-    JOIN accounts act ON v.id = account
-    WHERE v.creatorId = @vaultId
+    JOIN accounts act ON v.creatorId = act.id
+    WHERE v.creatorId = @creatorId
     ;";
     return _db.Query<Vault, Account, Vault>(sql, (vault, act) =>
     {

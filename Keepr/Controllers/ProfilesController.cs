@@ -15,7 +15,6 @@ public class ProfilesController : ControllerBase
   }
 
   [HttpGet("{profileId}")]
-  [Authorize]
   public ActionResult<Profile> GetProfileById(string profileId)
   {
     try

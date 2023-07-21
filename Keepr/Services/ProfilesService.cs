@@ -35,6 +35,9 @@ public class ProfilesService
 
   internal List<Vault> GetUserVaults(string profileId, string userId)
   {
+    // TODO this is the crazy logic!!!!!!!
+    // TODO check the helpReviews from Jeremy... you'll be looking at the 'getAllRestaurants()' in the restaurantService
+    // TODO we only want to return public vaults UNLESS the user making the req is the creator
     List<Vault> vaults = _repo.GetUserVaults(profileId);
     return vaults;
   }

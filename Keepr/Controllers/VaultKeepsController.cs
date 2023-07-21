@@ -19,7 +19,9 @@ public class VaultKeepsController : ControllerBase
   {
     try
     {
-      Account userInfo = await _auth0.GetUserInfoAsync<Account>(HttpContext); vkData.CreatorId = userInfo.Id;
+      Account userInfo = await _auth0.GetUserInfoAsync<Account>(HttpContext);
+      vkData.CreatorId = userInfo?.Id;
+      // TODO make sure to pass userId here so we can do our logic in the service
       VaultKeep newVk = _vaultKeepsService.CreateVaultKeep(vkData);
       return Ok(newVk);
     }
@@ -29,28 +31,28 @@ public class VaultKeepsController : ControllerBase
     }
   }
 
-  [HttpGet("{VaultKeepId}")]
-  public ActionResult<KeepsInVault> GetById(int kinvId)
-  {
-    try
-    {
-      KeepsInVault kinv = _vaultKeepsService.GetById(kinvId);
-      return Ok(kinv);
-    }
-    catch (Exception e)
-    {
-      return BadRequest(e.Message);
-    }
-  }
+  // [HttpGet("{VaultKeepId}")]
+  // public ActionResult<VaultKeep> GetById(int vkId)
+  // {
+  //   try
+  //   {
+  //     VaultKeep vk = _vaultKeepsService.GetById(vkId);
+  //     return Ok(vk);
+  //   }
+  //   catch (Exception e)
+  //   {
+  //     return BadRequest(e.Message);
+  //   }
+  // }
 
   [HttpDelete("{vaultKeepId}")]
   [Authorize]
-  public async Task<ActionResult<KeepsInVault>> DeleteVk(int vkId)
+  public async Task<ActionResult<string>> DeleteVk(int vaultKeepId)
   {
     try
     {
       Account userInfo = await _auth0.GetUserInfoAsync<Account>(HttpContext);
-      _vaultKeepsService.DeleteVk(vkId, userInfo.Id);
+      _vaultKeepsService.DeleteVk(vaultKeepId, userInfo.Id);
       return Ok("deleted");
     }
     catch (Exception e)
