@@ -1,16 +1,17 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <div class="container">
-          <div class="container">
-            <div class="row my-3">
-              <div class="col-md-4" v-for="k in keeps" :key="k.id">
-                <KeepCard :keep="k" />
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="Vault-Page container-fluid" v-if="vault">
+    <div class="align-itmes-center">
+      <div class="col-12 ps-4">
+        <img :src="vault.img" alt="vault.name">
+        <h1>{{ vault.name }}</h1>
+      </div>
+    </div>
+
+    <div class="container">
+    </div>
+    <div class="row my-3">
+      <div class="col-md-4" v-for="k in keeps" :key="k.id">
+        <VaultKeepCard :keep="k" />
       </div>
     </div>
   </div>
@@ -49,13 +50,23 @@ export default {
       }
     }
 
+    async function removeVaultKeep() {
+      try {
+        if (await Pop.confirm())
+          await vaultKeepsService.removeVaultKeep()
+      } catch (error) {
+        logger.error(error)
+        Pop.error(error.message)
+      }
+    }
+
     onMounted(() => {
       getVaultById()
       getVaultKeepsByVaultId()
     })
     return {
       vault: computed(() => AppState.activeVault),
-      keeps: computed(() => AppState.myKeeps)
+      keeps: computed(() => AppState.vaultKeeps)
 
     }
   }

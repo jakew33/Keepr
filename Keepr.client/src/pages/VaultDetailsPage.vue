@@ -6,20 +6,12 @@
         <h1>{{ vault.name }}</h1>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Vaults:</h2>
-
-        </div>
-      </div>
-    </div>
 
     <div class="container">
-    </div>
-    <div class="row my-3">
-      <div class="col-md-4" v-for="k in keeps" :key="k.id">
-        <KeepCard :keep="k" />
+      <div class="row my-3">
+        <div class="col-md-4" v-for="k in keeps" :key="k.id">
+          <KeepCard :keep="k" />
+        </div>
       </div>
     </div>
   </div>
@@ -28,11 +20,12 @@
 
 <script>
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useRoute, useRouter } from "vue-router";
 import { vaultsService } from "../services/VaultsService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
+import { vaultKeepsService } from "../services/VaultKeepsService.js";
 export default {
   setup() {
 
@@ -55,7 +48,7 @@ export default {
         vaultsService.getVaultsByProfile(route.params.id)
       } catch (error) {
         logger.log(error)
-        Pop.error("No vault here, fam")
+        Pop.error("Private Vault")
         router.push('/')
       }
     }
@@ -63,7 +56,7 @@ export default {
     async function getVaultKeepsByVaultId() {
       try {
         const vaultId = route.params.id
-        await vaultsService.getVaultById(vaultId)
+        await vaultKeepsService.getVaultById(vaultId)
       } catch (error) {
         logger.log(error)
         Pop.toast(error.message, 'error')
@@ -75,7 +68,7 @@ export default {
       getVaultKeepsByVaultId()
     })
     return {
-      vault: computed(() => AppState.vault),
+      vault: computed(() => AppState.activeVault),
       keeps: computed(() => AppState.activeVaultKeep)
     }
   }

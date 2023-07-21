@@ -23,13 +23,15 @@
               <router-link class="align-self-end" :to="{ name: 'Profile', params: { id: keep?.creatorId } }">
                 <img class="rounded-circle profile" :src="keep?.creator.picture" :alt="keep.name">
               </router-link>
-
             </div>
           </div>
         </section>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
+        <div class="d-flex">
+          <SaveKeepForm />
+          <!-- <button type="button" class="btn btn-secondary">Save</button> -->
+        </div>
       </div>
     </div>
   </div>
