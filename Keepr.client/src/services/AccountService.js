@@ -26,6 +26,19 @@ class AccountService {
     logger.log(AppState.myVaults)
   }
 
+  async setActiveVault(vaultId) {
+    const res = await api.get(`api/vaults/${vaultId}`)
+    logger.log('Setting Active Vault', res.data)
+    AppState.activeVault = new Vault(res.data)
+  }
+
+  async deleteMyVault(vaultId) {
+    const res = await api.delete(`api/vaults/${vaultId}`)
+    AppState.myVaults = AppState.myVaults.filter(v => v.id != vaultId)
+    logger.log("deleting MyVault", res.data)
+
+  }
+
 }
 
 export const accountService = new AccountService()

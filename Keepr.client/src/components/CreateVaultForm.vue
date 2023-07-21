@@ -1,7 +1,7 @@
 <template>
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title">Create Vault</h5>
+      <h5 class="modal-title">Vault</h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <form @submit.prevent="createVault()">

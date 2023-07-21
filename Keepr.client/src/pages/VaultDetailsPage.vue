@@ -2,6 +2,7 @@
   <div class="Vault-Page container-fluid" v-if="vault">
     <div class="align-itmes-center">
       <div class="col-12 ps-4">
+        <img :src="vault.img" alt="vault.name">
         <h1>{{ vault.name }}</h1>
       </div>
     </div>
@@ -59,8 +60,19 @@ export default {
       }
     }
 
+    async function getVaultKeepsByVaultId() {
+      try {
+        const vaultId = route.params.id
+        await vaultsService.getVaultById(vaultId)
+      } catch (error) {
+        logger.log(error)
+        Pop.toast(error.message, 'error')
+      }
+    }
+
     onMounted(() => {
       getVaultsByProfileId()
+      getVaultKeepsByVaultId()
     })
     return {
       vault: computed(() => AppState.vault),

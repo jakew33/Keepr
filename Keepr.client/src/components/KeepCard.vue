@@ -1,5 +1,5 @@
 <template>
-  <div class="card text-white keep-card my-3 bg rounded position-relative" @click="setActiveKeep(keep.id)">
+  <div class="card text-white keep-card my-3 bg rounded position-relative col-md-12" @click="setActiveKeep(keep.id)">
     <img class="rounded elevation-5" :src="keep.img" :alt="keep.name">
     <div class="card-img-overlay d-flex flex-column justify-content-end">
       <h3 class="title mb-3">{{ keep.name }}</h3>
@@ -29,7 +29,6 @@ export default {
     keep: { type: Keep, required: true }
   },
   setup(props) {
-    // const route = useRoute()
 
     return {
       account: computed(() => AppState.account),

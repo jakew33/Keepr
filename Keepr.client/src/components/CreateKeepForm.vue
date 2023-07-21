@@ -1,7 +1,7 @@
 <template>
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title">Create Keep</h5>
+      <h5 class="modal-title">Keep</h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <form @submit.prevent="createKeep()">
@@ -17,7 +17,7 @@
         <textarea v-model="editable.description" class="form-control w-100" name="description" id="description" cols="30"
           rows="10">Description</textarea>
       </div>
-      <button type="submit" class="btn btn-success">Create Vault</button>
+      <button type="submit" class="btn btn-success">Create Keep</button>
     </form>
   </div>
 </template>

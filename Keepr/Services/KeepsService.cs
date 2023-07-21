@@ -58,7 +58,7 @@ public class KeepsService
     Keep keep = GetById(keepId, userId);
     if (keep.CreatorId != userId) throw new Exception("Get outta here, nerd!");
     int rows = _repo.DeleteKeep(keepId);
-    if (rows > 1) new Exception("I dunno");
+    if (rows > 1) throw new Exception("I dunno");
   }
 
   // internal void DeleteVk(int vkId, string userId)

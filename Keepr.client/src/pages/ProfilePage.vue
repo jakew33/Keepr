@@ -34,8 +34,6 @@ import { profileService } from '../services/ProfileService.js'
 import Pop from '../utils/Pop.js'
 import { logger } from "../utils/Logger.js"
 import { vaultsService } from "../services/VaultsService.js"
-import { keepsService } from "../services/KeepsService.js"
-import { router } from "../router.js"
 
 export default {
   setup() {

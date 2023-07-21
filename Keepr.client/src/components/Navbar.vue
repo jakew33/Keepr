@@ -13,8 +13,8 @@
             Create
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item text-black" data-bs-toggle="modal" data-bs-target="#modal">Create Keep</a></li>
-            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#vaultForm">Create Vault</a></li>
+            <li><a class="dropdown-item text-black" data-bs-toggle="modal" data-bs-target="#modal">Keep</a></li>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#vaultForm">Vault</a></li>
           </ul>
         </div>
       </ul>

@@ -17,8 +17,9 @@ public class VaultKeepsService
   internal VaultKeep CreateVaultKeep(VaultKeep vkData, string userId)
   {
     Vault vault = _vaultsService.GetById(vkData.VaultId, userId);
-    if (userId != vkData.CreatorId)
+    if (userId != vault.CreatorId)
     {
+      //FIXME this is happening at valid auth create
       throw new Exception("Get outta here, nerd");
     }
 
@@ -39,7 +40,7 @@ public class VaultKeepsService
   internal VaultKeep GetById(int vkId)
   {
     VaultKeep vk = _repo.GetById(vkId);
-    if (vk == null) new Exception("Wrong Id, chief");
+    if (vk == null) throw new Exception("Wrong Id, chief");
     return vk;
   }
 
@@ -48,7 +49,7 @@ public class VaultKeepsService
     VaultKeep vk = GetById(vkId);
     if (vk.CreatorId != userId) throw new Exception("Go away");
     int rows = _repo.DeleteVk(vkId);
-    if (rows > 1) new Exception("oops");
+    if (rows > 1) throw new Exception("oops");
     return ("Removed VaultKeep");
   }
 }

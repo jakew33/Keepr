@@ -41,4 +41,14 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.profile {
+  height: 100px;
+  aspect-ratio: 1/1;
+  object-fit: fit;
+  bottom: 0;
+  left: 0;
+  right: 100px;
+  padding: 1rem;
+}
+</style>

@@ -53,6 +53,6 @@ public class VaultsService
     Vault vault = GetById(vaultId, userId);
     if (vault.CreatorId != userId) throw new Exception("Intruder Alert");
     int rows = _repo.DeleteVault(vaultId);
-    if (rows > 1) new Exception("Not sure what happened there, chief");
+    if (rows > 1) throw new Exception("Not sure what happened there, chief");
   }
 }

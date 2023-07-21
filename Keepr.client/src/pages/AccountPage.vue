@@ -10,6 +10,9 @@
   </div>
 
   <EditAccountForm />
+  <div class="col-12 d-flex justify-content-center">
+    <h1> My Vaults</h1>
+  </div>
 
   <div class="container">
     <div class="row my-3">

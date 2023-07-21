@@ -24,13 +24,13 @@ class KeepsService {
     AppState.keeps.unshift(new Keep(res.data))
   }
 
+  async getKeepsByVaultId(vaultId) {
+    AppState.keeps = []
+    const res = await api.get(`api/vaults/${vaultId}/keeps`)
+    logger.log('getting keeps in vault', res.data)
+    AppState.keeps = res.data.map(k => new Keep(k))
+  }
 
-  // async getMyKeeps() {
-  //   const res = await api.get(`account/keeps`)
-  //   logger.log("Getting MyKeeps", res.data)
-  //   AppState.myKeeps = res.data.map(k => new Keep(k))
-  //   logger.log(AppState.myKeeps)
-  // }
 
   async saveKeep(keepData) {
     const res = api.post('api/keeps', keepData)
@@ -46,5 +46,11 @@ class KeepsService {
   }
 
 }
+// async getMyKeeps() {
+//   const res = await api.get(`account/keeps`)
+//   logger.log("Getting MyKeeps", res.data)
+//   AppState.myKeeps = res.data.map(k => new Keep(k))
+//   logger.log(AppState.myKeeps)
+// }
 
 export const keepsService = new KeepsService()
