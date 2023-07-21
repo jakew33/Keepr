@@ -2,7 +2,7 @@
   <div class="card text-white keep-card my-3 bg rounded position-relative" @click="setActiveKeep(keep.id)">
     <img class="rounded elevation-5" :src="keep.img" :alt="keep.name">
     <div class="card-img-overlay d-flex flex-column justify-content-end">
-      <h3 class="bottom-title mb-3">{{ keep.name }}</h3>
+      <h3 class="title mb-3">{{ keep.name }}</h3>
       <img class="rounded-circle profile align-self-end" :src="keep?.creator.picture" :alt="keep.name">
     </div>
   </div>
@@ -65,21 +65,14 @@ export default {
 
 
 <style lang="scss" scoped>
-.bottom-title {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+.title {
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
 }
 
 .profile {
-  height: 100px;
+  height: 7rem;
   aspect-ratio: 1/1;
-  object-fit: fit;
-  bottom: 0;
-  left: 0;
-  right: 100px;
+  object-fit: fill;
   padding: 1rem;
 }
 </style>

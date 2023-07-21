@@ -16,9 +16,6 @@ public class VaultKeepsService
 
   internal VaultKeep CreateVaultKeep(VaultKeep vkData, string userId)
   {
-    // Go get the vault that we are trying to create the vaultkeep for
-    // ** grab the vaultId from the data we are passing in
-    // If the user is not the creator of this vault, we should throw an error
     Vault vault = _vaultsService.GetById(vkData.VaultId, userId);
     if (userId != vkData.CreatorId)
     {

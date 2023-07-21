@@ -33,6 +33,22 @@
       </div>
     </div>
   </div>
+
+  <!-- <div class="container-fluid" v-if="keep">
+
+    <div class="row">
+
+      <div class="col-md-6 card color">
+        <h1>{{ keep.name }}</h1>
+        <p>{{ keep.description }}</p>
+      </div>
+
+      <div class="col-md-6 p-l">
+        <img :src="keep.img" class="keep.name">
+      </div>
+
+    </div>
+  </div> -->
 </template>
 
 

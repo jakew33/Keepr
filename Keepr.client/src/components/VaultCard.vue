@@ -1,6 +1,6 @@
 <template>
   <div class="card text-white keep-card my3 bg rounded">
-    <img class="rounded elevation-5" :src="vault.img" :alt="vault.name">
+    <img class="rounded elevation-5" :src="vault.img" :alt="vault?.name">
     <div class="card-img-overlay">
       <div class="d-flex justify-content-around p-1">
       </div>
@@ -8,7 +8,7 @@
         {{ vault.name }}</p>
     </div>
   </div>
-  <div v-if="vault.creatorId == account.id" class="d-flex justify-content-around">
+  <div v-if="vault?.creatorId == account.id" class="d-flex justify-content-around">
     <!-- <button class="btn btn-dark elevation-5 text-white" @click="deleteVault()">Delete Vault</button> -->
   </div>
 </template>
@@ -22,12 +22,13 @@ import { vaultsService } from "../services/VaultsService.js";
 import { Modal } from "bootstrap";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
+import { router } from "../router.js";
 
 export default {
   props: {
     vault: { type: Vault, required: true }
   },
-  setup(props) {
+  setup() {
 
     return {
       account: computed(() => AppState.account),
@@ -40,6 +41,7 @@ export default {
         } catch (error) {
           logger.log(error)
           Pop.error(error)
+          router.push('/')
         }
       }
     }

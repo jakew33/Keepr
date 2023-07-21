@@ -15,9 +15,11 @@
       </div>
     </div>
   </div>
-  <div class="row my-3">
-    <div class="col-md-8 m-auto" v-for="v in vaults" :key="v.id">
-      <VaultCard />
+  <div class="container">
+    <div class="row my-3">
+      <div class="col-md-4" v-for="v in vaults" :key="v.id">
+        <VaultCard :vault="v" />
+      </div>
     </div>
   </div>
 </template>
@@ -33,6 +35,7 @@ import Pop from '../utils/Pop.js'
 import { logger } from "../utils/Logger.js"
 import { vaultsService } from "../services/VaultsService.js"
 import { keepsService } from "../services/KeepsService.js"
+import { router } from "../router.js"
 
 export default {
   setup() {
@@ -46,15 +49,6 @@ export default {
         Pop.error(error)
       }
     }
-
-    // async function getKeepsByProfile() {
-    //   try {
-    //     const keepId = route.params.activeProfileKeeps;
-    //     await keepsService.getKeepsByProfile(keepId)
-    //   } catch (error) {
-    //     Pop.error(error)
-    //   }
-    // }
 
     async function getVaultsByProfile() {
       try {

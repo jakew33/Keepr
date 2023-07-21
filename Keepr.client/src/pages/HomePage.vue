@@ -61,13 +61,13 @@ export default {
   .home-card {
     width: 50vw;
 
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
+    // >img {
+    //   height: 200px;
+    //   max-width: 200px;
+    //   width: 100%;
+    //   object-fit: contain;
+    //   object-position: center;
+    // }
   }
 }
 </style>
