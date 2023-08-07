@@ -15,11 +15,10 @@
       </div>
     </div>
   </div>
-  <div col-12></div>
 
-  <div class="col-12 d-flex justify-content-center">
+  <!-- <div class="col-12 d-flex justify-content-center">
     <h1>Vaults</h1>
-  </div>
+  </div> -->
 
   <div class="container">
     <div class="row my-3">
@@ -29,9 +28,9 @@
     </div>
   </div>
 
-  <div class="col-12 d-flex justify-content-center">
+  <!-- <div class="col-12 d-flex justify-content-center">
     <h1>Keeps</h1>
-  </div>
+  </div> -->
 
   <div class="container">
     <div class="row my-3">
@@ -69,8 +68,9 @@ export default {
 
     async function getVaultsByProfile() {
       try {
-        const vaultId = route.params.activeProfileVaults;
-        await vaultsService.getVaultsByProfile(vaultId);
+        // const vaultId = route.params.activeProfileVaults;
+        // console.log(vaultId);
+        await vaultsService.getVaultsByProfile(route.params.id);
       } catch (error) {
         Pop.error(error)
       }
@@ -78,8 +78,8 @@ export default {
 
     async function getKeepsByProfile() {
       try {
-        const keepId = route.params.activeProfileKeeps;
-        await keepsService.getKeepsByProfile(keepId);
+        // const keepId = route.params.activeProfileKeeps;
+        await keepsService.getKeepsByProfile(route.params.id);
       } catch (error) {
         Pop.error(error)
       }

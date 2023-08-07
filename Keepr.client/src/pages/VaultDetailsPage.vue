@@ -44,12 +44,12 @@ export default {
 
     async function getVaultsByProfileId() {
       try {
-        vaultsService.getVaultById(route.params.id)
-        vaultsService.getVaultsByProfile(route.params.id)
+        await vaultsService.getVaultById(route.params.id)
+        // await vaultsService.getVaultsByProfile(route.params.id)
       } catch (error) {
-        logger.log(error)
+        logger.log('AM IR UNNING')
         Pop.error("Private Vault")
-        router.push('/')
+        router.push({ name: 'Home' })
       }
     }
 

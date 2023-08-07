@@ -47,7 +47,7 @@ export default {
       async removeVaultKeep() {
         try {
           if (await Pop.confirm())
-            await vaultKeepsService.removeVaultKeep(props.keep.id)
+            await vaultKeepsService.removeVaultKeep(props.keep.vaultKeepId)
         } catch (error) {
           logger.error(error)
           Pop.error(error.message);

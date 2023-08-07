@@ -24,12 +24,12 @@ import { logger } from "../utils/Logger.js";
 import { vaultKeepsService } from "../services/VaultKeepsService.js";
 import Pop from "../utils/Pop.js";
 import { AppState } from "../AppState.js";
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { vaultsService } from "../services/VaultsService.js";
 export default {
   setup() {
     const route = useRoute()
-
+    const router = useRouter()
     async function getVaultKeepsByVaultId() {
       try {
         const vaultId = route.params.id
@@ -47,6 +47,7 @@ export default {
       } catch (error) {
         logger.log(error)
         Pop.toast(error.message, 'error')
+        router.push({ name: 'Home' })
       }
     }
 
