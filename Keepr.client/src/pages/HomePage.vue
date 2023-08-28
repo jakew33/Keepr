@@ -1,13 +1,13 @@
 <template>
   <div class="Home-Page">
-
-    <div class="container">
+    <div class="container-fluid">
       <div class="row my-3">
         <div class="col-md-4" v-for="k in keeps" :key="k.id">
           <KeepCard :keep="k" />
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -69,5 +69,6 @@ export default {
     //   object-position: center;
     // }
   }
+
 }
 </style>
