@@ -23,5 +23,6 @@
     "titleBar.inactiveBackground": "#6a258199",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#6a2581"
+  "peacock.color": "#6a2581",
+  "dotnet.defaultSolution": "Keepr/Keepr.sln"
 }
